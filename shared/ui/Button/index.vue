@@ -45,9 +45,9 @@ const widthClass = computed(() => {
   if (props.fullWidth) return 'w-full';
 
   const sizeMap = {
-    sm: 'w-[98px]',
-    md: 'w-[128px]',
-    lg: 'w-[144px]',
+    sm: 'min-w-[98px] px-4',
+    md: 'min-w-[128px] px-6',
+    lg: 'min-w-[144px] px-8',
   };
 
   return sizeMap[props.size];
