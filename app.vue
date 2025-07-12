@@ -4,11 +4,9 @@
   <p>Double: {{ counter.doubleCount }}</p>
   <p>Fourth: {{ counter.doubleCount * 2 }}</p>
   <button @click="counter.increment()">Increment</button>
-  <Button />
+  <Button variant="rounded">Hello!</Button>
 </template>
 
 <script setup lang="ts">
-import Button from './shared/ui/Button/Button.vue';
-
 const counter = useCounterStore();
 </script>
