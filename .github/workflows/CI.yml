@@ -1,0 +1,38 @@
+name: 'CI'
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: 
+      - master
+    types: [opened, reopened, synchronize]
+
+jobs:
+  lints:
+    runs-on: ubuntu-latest
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Install modules
+        run: yarn
+
+      - name: Test lint
+        run: yarn lint
+
+  vitest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Install modules
+        run: yarn
+  
+      - name: Build project
+        run: yarn build
+
+      - name: Run vitest
+        run: yarn test:ci
