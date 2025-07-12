@@ -3,7 +3,7 @@ import path from 'path';
 import vue from '@vitejs/plugin-vue';
 
 const config: StorybookConfig = {
-  stories: ['../shared/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+  stories: ['../src/shared/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   addons: ['@storybook/addon-a11y'],
   framework: {
     name: '@storybook/vue3-vite',
@@ -17,10 +17,10 @@ const config: StorybookConfig = {
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': path.resolve(__dirname, '../'),
-      '~': path.resolve(__dirname, '../'),
-      '~/shared': path.resolve(__dirname, '../shared'),
-      '~/modules': path.resolve(__dirname, '../modules'),
+      '@': path.resolve(__dirname, '../src'),
+      '~': path.resolve(__dirname, '../src'),
+      '~/shared': path.resolve(__dirname, '../src/shared'),
+      '~/features': path.resolve(__dirname, '../src/features'),
     };
 
     config.css = {
@@ -28,7 +28,7 @@ const config: StorybookConfig = {
       preprocessorOptions: {
         scss: {
           additionalData: `
-            @import "${path.resolve(__dirname, '../shared/styles/variables.scss')}";
+            @import "${path.resolve(__dirname, '../src/shared/styles/variables.scss')}";
           `,
         },
       },

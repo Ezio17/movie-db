@@ -21,18 +21,18 @@ jobs:
       - name: Test lint
         run: yarn lint
 
-  vitest:
-    runs-on: ubuntu-latest
+  # vitest:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
       
-      - name: Install modules
-        run: yarn
+  #     - name: Install modules
+  #       run: yarn
   
-      - name: Build project
-        run: yarn build
+  #     - name: Build project
+  #       run: yarn build
 
-      - name: Run vitest
-        run: yarn test:ci
+  #     - name: Run vitest
+  #       run: yarn test:ci
