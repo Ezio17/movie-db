@@ -9,6 +9,8 @@ export default defineNuxtConfig({
 
   modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', '@nuxtjs/storybook', '@nuxtjs/i18n'],
 
+  css: ['./src/assets/styles/reset.scss', './src/assets/styles/global.scss'],
+
   components: [
     { path: '~/shared/ui', pathPrefix: false },
     { path: '~/shared/components', pathPrefix: false },
@@ -18,6 +20,7 @@ export default defineNuxtConfig({
   alias: {
     '@': path.resolve(__dirname, 'src'),
     '~': path.resolve(__dirname, 'src'),
+    '@root': path.resolve(__dirname, './'),
     '@shared': path.resolve(__dirname, 'src/shared'),
     '@features': path.resolve(__dirname, 'src/features'),
     '@pages': path.resolve(__dirname, 'src/pages'),
@@ -34,10 +37,12 @@ export default defineNuxtConfig({
   },
 
   i18n: {
+    strategy: 'no_prefix',
     defaultLocale: 'uk',
     locales: [
       { code: 'uk', name: 'Українська', file: 'uk.json' },
       { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'es', name: 'Español', file: 'es.json' },
     ],
   },
 });

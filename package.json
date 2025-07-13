@@ -49,6 +49,8 @@
     "lint-staged": "^16.1.2",
     "path": "^0.12.7",
     "prettier": "3.5.3",
+    "sass": "^1.89.2",
+    "sass-loader": "^16.0.5",
     "storybook": "^9.0.16",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4",

@@ -1,4 +1,10 @@
 {
   "hello": "Hello",
-  "welcome": "Welcome to our site"
+  "welcome": "Welcome to our site",
+  "movie": "Movie",
+  "serial": "Serial",
+  "actors": "Actors",
+  "contacts": "Contacts",
+  "Email": "Email",
+  "Phone": "Phone"
 }
