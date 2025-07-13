@@ -7,12 +7,12 @@ export default defineVitestConfig({
   test: {
     globals: true,
     environment: 'nuxt',
-    include: ['**/*.test.ts', '**/*.spec.ts', '**/*.test.js', '**/*.spec.js'],
+    include: ['**/*.{test,spec}.ts'],
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './'),
-      '~': path.resolve(__dirname, './'),
+      '@': path.resolve(__dirname, './src'),
+      '~': path.resolve(__dirname, './src'),
     },
   },
 });

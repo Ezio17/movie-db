@@ -1,0 +1,53 @@
+import type { StorybookConfig } from '@storybook/vue3-vite';
+import path from 'path';
+import vue from '@vitejs/plugin-vue';
+
+const config: StorybookConfig = {
+  stories: ['../src/shared/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+  addons: ['@storybook/addon-a11y'],
+  framework: {
+    name: '@storybook/vue3-vite',
+    options: {},
+  },
+  viteFinal: async (config) => {
+    // Додайте Vue плагін
+    config.plugins = config.plugins || [];
+    config.plugins.push(vue());
+
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, '../src'),
+      '~': path.resolve(__dirname, '../src'),
+      '~/shared': path.resolve(__dirname, '../src/shared'),
+      '~/features': path.resolve(__dirname, '../src/features'),
+    };
+
+    config.css = {
+      ...config.css,
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            @import "${path.resolve(__dirname, '../src/shared/styles/variables.scss')}";
+          `,
+        },
+      },
+      postcss: {
+        plugins: [
+          require('tailwindcss'),
+          require('autoprefixer'),
+        ],
+      },
+    };
+
+    config.define = {
+      ...config.define,
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: false,
+    };
+
+    return config;
+  },
+};
+
+export default config;
