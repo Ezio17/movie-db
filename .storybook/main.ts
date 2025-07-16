@@ -10,7 +10,6 @@ const config: StorybookConfig = {
     options: {},
   },
   viteFinal: async (config) => {
-    // Додайте Vue плагін
     config.plugins = config.plugins || [];
     config.plugins.push(vue());
 
@@ -18,12 +17,9 @@ const config: StorybookConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': path.resolve(__dirname, '../src'),
-      '~': path.resolve(__dirname, '../src'),
-      '~/shared': path.resolve(__dirname, '../src/shared'),
-      '~/features': path.resolve(__dirname, '../src/features'),
-      '@shared': path.resolve(__dirname, 'src/shared'),
-      '@features': path.resolve(__dirname, 'src/features'),
-      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@shared': path.resolve(__dirname, '../src/shared'),
+      '@widgets': path.resolve(__dirname, '../src/widgets'),
+      '@pages': path.resolve(__dirname, '../src/pages'),
     };
 
     config.css = {
@@ -36,10 +32,7 @@ const config: StorybookConfig = {
         },
       },
       postcss: {
-        plugins: [
-          require('tailwindcss'),
-          require('autoprefixer'),
-        ],
+        plugins: [require('tailwindcss'), require('autoprefixer')],
       },
     };
 

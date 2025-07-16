@@ -1,10 +1,10 @@
 import type { Preview } from '@storybook/vue3';
-import '@/assets/styles/tailwind.scss';
+import '@/assets/styles/tailwind.css';
 
 const preview: Preview = {
   parameters: {
-    actions: { 
-      argTypesRegex: '^on[A-Z].*' 
+    actions: {
+      argTypesRegex: '^on[A-Z].*',
     },
     controls: {
       matchers: {

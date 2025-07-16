@@ -1,4 +1,21 @@
 {
   // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json"
+  "extends": "./.nuxt/tsconfig.json",
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/shared/types/**/*.d.ts"],
+  "compilerOptions": {
+    "types": ["@nuxtjs/i18n"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "~/*": ["./src/*"],
+      "@root/*": ["./*"],
+      "@shared/*": ["./src/shared/*"],
+      "@widgets/*": ["./src/widgets/*"],
+      "@pages/*": ["./src/pages/*"],
+      "#components/*": [".nuxt/components/*"],
+      "#imports": ["./.nuxt/imports.d.ts"],
+      "#app": ["./.nuxt/imports.d.ts"],
+      "#build/*": ["./.nuxt/*"]
+    }
+  }
 }

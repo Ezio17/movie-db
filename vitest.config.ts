@@ -12,10 +12,9 @@ export default defineVitestConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
-      '~': path.resolve(__dirname, 'src'),
       '@root': path.resolve(__dirname, './'),
       '@shared': path.resolve(__dirname, 'src/shared'),
-      '@features': path.resolve(__dirname, 'src/features'),
+      '@widgets': path.resolve(__dirname, 'src/widgets'),
       '@pages': path.resolve(__dirname, 'src/pages'),
     },
   },

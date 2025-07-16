@@ -6,5 +6,13 @@
   "actors": "Актори",
   "contacts": "Контакти",
   "Email": "Пошта",
-  "Phone": "Телефон"
+  "Phone": "Телефон",
+  "find a movie": "Знайти фільм",
+  "rate": "Оцінка",
+  "release": "Реліз",
+  "show more": "Показати більше",
+  "no results found": "Нічого не знайдено",
+
+  "Github": "Github",
+  "Linkedin": "Linkedin"
 }
