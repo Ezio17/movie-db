@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect, computed } from 'vue';
+import { ref, watch, computed } from 'vue';
 import { useClickOutside } from '@shared/composable';
 import { Navigation, Language, SearchResults } from './components';
 import { useMovieSearch } from './api';
@@ -59,17 +59,17 @@ function closeSearchResults() {
   isResultsOpen.value = false;
 }
 
-watchEffect(() => {
-  if (pending.value === false) {
-    openSearchResults();
-  }
-});
-
 function searchInputFocus() {
   if (searchValue.value.trim()) {
     openSearchResults();
   }
 }
+
+watch(pending, () => {
+  if (pending.value === false) {
+    openSearchResults();
+  }
+});
 
 const exposedEl = computed(() => searchBlock.value?.innerEl || null);
 
