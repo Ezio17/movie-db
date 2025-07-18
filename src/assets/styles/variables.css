@@ -2,7 +2,7 @@
   --header-height: 80px;
 }
 
-@media all and (max-width: 640px) {
+@media all and (max-width: 768px) {
   :root {
     --header-height: 120px;
   }

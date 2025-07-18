@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full bg-gray-700">
+  <header class="w-full bg-zinc-900">
     <div class="wrap h-full relative flex items-center gap-3">
       <NuxtLink class="sm:mr-16" to="/">
         <img
@@ -12,9 +12,9 @@
       <Navigation class="hidden md:block" />
 
       <div
-        class="flex justify-center flex-col sm:flex-row items-center h-full gap-4 sm:gap-8 ml-auto"
+        class="flex justify-center flex-col md:flex-row items-center h-full gap-4 md:gap-8 ml-auto"
       >
-        <div class="flex justify-end items-center gap-6 w-full sm:w-auto">
+        <div class="flex justify-end items-center gap-6 w-full md:w-auto">
           <Language />
 
           <BurgerButton class="sm:ml-2 md:hidden" @toggle="emit('toggle-mobile-menu')" />

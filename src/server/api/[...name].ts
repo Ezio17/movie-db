@@ -1,4 +1,12 @@
-import { defineEventHandler, getMethod, getQuery, readBody, createError, getRouterParam } from 'h3';
+import {
+  defineEventHandler,
+  getMethod,
+  getQuery,
+  readBody,
+  createError,
+  getRouterParam,
+  parseCookies,
+} from 'h3';
 import { $fetch } from 'ofetch';
 
 interface Response {
@@ -22,6 +30,8 @@ export default defineEventHandler(async (event) => {
   const method = getMethod(event);
   const query = getQuery(event);
   const apiPath = getRouterParam(event, 'name');
+  const cookies = parseCookies(event);
+  const locale = cookies.i18n_redirected || 'uk';
   const tmdbUrl = `https://api.themoviedb.org/3/${apiPath}`;
 
   try {
@@ -32,8 +42,9 @@ export default defineEventHandler(async (event) => {
         Accept: 'application/json',
       },
       query: {
-        ...query,
         api_key: process.env.TMDB_API_KEY,
+        language: locale,
+        ...query,
       },
       ...(method !== 'GET' &&
         method !== 'HEAD' && {
