@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav data-testid="navigation">
     <ul class="flex gap-8">
       <li v-for="{ link, name } of navigation" :key="link" class="li-hover">
         <NuxtLink class="text-white text-xl font-bold" :to="link">
@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { navigation } from '@widgets/header/constants';
+import { navigation } from '@shared/constants';
 </script>
 
 <style lang="scss" scoped>

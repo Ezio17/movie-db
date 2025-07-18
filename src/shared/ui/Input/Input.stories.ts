@@ -55,5 +55,5 @@ export const PasswordInput: Story = {
     modelValue: 'secret',
     placeholder: 'Enter your password',
   },
-  name: 'Password Input',
+  name: 'Enter your password',
 };

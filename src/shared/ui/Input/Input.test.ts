@@ -10,6 +10,7 @@ describe('Input.vue', () => {
     wrapper = mount(Input, {
       props: {
         modelValue: '',
+        placeholder: 'Type here',
       },
     });
   });
