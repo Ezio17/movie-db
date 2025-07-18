@@ -18,7 +18,6 @@ const useMovieSearch = (searchValue: Ref<string>) => {
   return useFetch<MovieResponse | null>('/api/search/movie', {
     method: 'GET',
     query: {
-      language: 'uk',
       page: 1,
       include_adult: false,
       query: debouncedSearchValue,

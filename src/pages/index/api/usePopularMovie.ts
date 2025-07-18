@@ -5,7 +5,6 @@ const useMovieSearch = () => {
   return useFetch<MovieResponse>('/api/movie/popular', {
     method: 'GET',
     query: {
-      language: 'uk',
       page: 1,
     },
   });

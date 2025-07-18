@@ -2,7 +2,7 @@
   <transition name="slide-left">
     <aside
       v-if="isOpen"
-      class="fixed top-[var(--header-height)] left-0 h-full w-1/2 bg-gray-700 shadow-lg z-50"
+      class="fixed top-[var(--header-height)] left-0 h-full w-1/2 bg-zinc-900 shadow-lg z-50"
       @click.stop
     >
       <button

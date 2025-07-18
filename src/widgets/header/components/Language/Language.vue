@@ -1,20 +1,22 @@
 <template>
   <div class="relative text-black">
-    <span class="cursor-pointer capitalize text-white font-bold" @click.stop="toggleBlock">{{
-      locale
-    }}</span>
+    <span
+      class="cursor-pointer capitalize text-white text-xl font-bold"
+      @click.stop="toggleBlock"
+      >{{ locale }}</span
+    >
 
     <div
       v-if="isOpen"
       ref="langBlock"
       data-testid="langBlock"
-      class="absolute z-10 left-[-100%] top-[-100%] p-3 bg-white rounded-md shadow-2xl font-semibold"
+      class="absolute z-10 left-[-170%] top-[-25%] p-3 bg-gray-200 rounded-md shadow-2xl"
     >
       <ul>
         <li
           v-for="{ code, name } of locales"
           :key="code"
-          class="mb-1 last:mb-0 cursor-pointer hover:underline"
+          class="mb-1 last:mb-0 cursor-pointer text-base font-bold hover:underline inline-block"
           @click="changeLanguage(code)"
         >
           {{ name }}
@@ -28,7 +30,7 @@
 import useClickOutside from '@shared/composable/useClickOutside';
 import { ref } from 'vue';
 import type { Locales } from '@shared/types';
-import { useNuxtApp } from '#app';
+import { useNuxtApp, reloadNuxtApp } from '#app';
 
 // Робота з відкриванням
 const isOpen = ref(false);
@@ -48,6 +50,8 @@ const {
 async function changeLanguage(lang: Locales) {
   try {
     await setLocale(lang);
+
+    reloadNuxtApp({ ttl: 0 });
   } catch (error) {
     console.error('Failed to change language:', error);
   } finally {
