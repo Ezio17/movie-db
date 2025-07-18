@@ -6,6 +6,6 @@ describe('Loader', () => {
   it('should be defined', () => {
     const wrapper = mount(Loader);
 
-    expect(wrapper.find('[data-testid="loader"]')).toBeDefined();
+    expect(wrapper.find('[data-testid="loader"]').exists()).toBe(true);
   });
 });

@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul data-testid="contact-list">
     <li
       v-for="{ title, text, href } of contacts"
       :key="title"

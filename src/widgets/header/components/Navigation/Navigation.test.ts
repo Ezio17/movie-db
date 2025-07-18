@@ -28,7 +28,7 @@ describe('Navigation.vue', () => {
   });
 
   it('should be defined', () => {
-    expect(Navigation).toBeDefined();
+    expect(wrapper.find('[data-testid="navigation"]').exists()).toBe(true);
   });
 
   it('renders all navigation links', () => {

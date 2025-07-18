@@ -11,12 +11,18 @@
 
       <Navigation class="hidden md:block" />
 
-      <div class="flex flex-row items-center h-full gap-4 sm:gap-8 ml-auto">
-        <Language />
+      <div
+        class="flex justify-center flex-col sm:flex-row items-center h-full gap-4 sm:gap-8 ml-auto"
+      >
+        <div class="flex justify-end items-center gap-6 w-full sm:w-auto">
+          <Language />
 
-        <div class="flex flex-grow-1 justify-end items-center relative max-w-[200px] h-full">
+          <BurgerButton class="sm:ml-2 md:hidden" @toggle="emit('toggle-mobile-menu')" />
+        </div>
+
+        <div class="flex flex-grow-1 justify-end items-center relative max-w-[200px]">
           <Input
-            v-model="searchValue"
+            v-model.trim="searchValue"
             :placeholder="$t('find a movie')"
             class="w-full"
             @focus="searchInputFocus"
@@ -31,8 +37,6 @@
         :pending="pending"
         :error-message="error?.message || ''"
       />
-
-      <BurgerButton class="sm:ml-2 md:hidden" @open="openMobileMenu" />
     </div>
   </header>
 </template>
@@ -43,6 +47,10 @@ import { useClickOutside } from '@shared/composable';
 import { Navigation, Language, SearchResults } from './components';
 import { useMovieSearch } from './api';
 import { BurgerButton } from './ui';
+
+const emit = defineEmits<{
+  'toggle-mobile-menu': [];
+}>();
 
 // Пошук фільма
 const searchValue = ref('');
@@ -74,9 +82,4 @@ watch(pending, () => {
 const exposedEl = computed(() => searchBlock.value?.innerEl || null);
 
 useClickOutside(exposedEl, isResultsOpen, closeSearchResults, true);
-
-// Мобільне меню
-function openMobileMenu() {
-  // console.log('open!!');
-}
 </script>

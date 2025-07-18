@@ -1,7 +1,7 @@
 <template>
   <div
     ref="innerEl"
-    class="absolute top-full left-1/2 -translate-x-1/2 xl:left-0 xl:translate-x-0 w-[calc(100%-32px)] xl:w-full z-20 max-h-[500px] overflow-auto py-3 bg-white text-gray-900 rounded-b-xl shadow-lg ring-1 ring-black/5"
+    class="absolute top-full left-1/2 -translate-x-1/2 xl:left-0 xl:translate-x-0 w-full z-20 max-h-[500px] overflow-auto py-3 bg-white text-gray-900 rounded-b-xl shadow-lg ring-1 ring-black/5"
   >
     <div v-if="pending" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <Loader />

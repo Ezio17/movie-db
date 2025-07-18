@@ -25,7 +25,7 @@ interface Props {
   /**
    * Текст-підказка, яка відображається всередині інпуту, коли він порожній.
    */
-  placeholder?: string;
+  placeholder: string;
 }
 
 withDefaults(defineProps<Props>(), { type: 'text' });

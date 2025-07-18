@@ -1,3 +1,4 @@
 import useClickOutside from './useClickOutside';
+import useScrollLock from './useScrollLock';
 
-export { useClickOutside };
+export { useClickOutside, useScrollLock };

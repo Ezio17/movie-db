@@ -6,6 +6,6 @@ describe('BurgerButton', () => {
   it('should be defined', () => {
     const wrapper = mount(Loader);
 
-    expect(wrapper.find('[data-testid="burger-button"]')).toBeDefined();
+    expect(wrapper.find('[data-testid="burger-button"]').exists()).toBe(true);
   });
 });
