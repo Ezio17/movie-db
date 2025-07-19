@@ -25,7 +25,7 @@ const router = createRouter({
 });
 
 describe('MovieCarousel', () => {
-  const createWrapper = (movies: Movie[] | null = mockMovies) => {
+  const createWrapper = (movies: Movie[] = mockMovies) => {
     return mount(MovieCarousel, {
       props: {
         movies,
@@ -48,8 +48,8 @@ describe('MovieCarousel', () => {
     expect(wrapper.findAll('.splide-slide-mock')).toHaveLength(3);
   });
 
-  it('does not render carousel when movies is null', () => {
-    const wrapper = createWrapper(null);
+  it('does not render carousel when movies is empty array', () => {
+    const wrapper = createWrapper([]);
 
     expect(wrapper.find('.splide-mock').exists()).toBe(false);
   });

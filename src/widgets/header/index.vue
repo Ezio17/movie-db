@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full bg-zinc-900">
+  <header class="w-full bg-zinc-900 fixed z-10 h-[var(--header-height)]">
     <div class="wrap h-full relative flex items-center gap-3">
       <NuxtLink class="sm:mr-16" to="/">
         <img

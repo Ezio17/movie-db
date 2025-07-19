@@ -1,3 +1,3 @@
-import usePopularMovie from './usePopularMovie';
+import useMoviesOrTvShows from './useMoviesOrTvShows';
 
-export { usePopularMovie };
+export { useMoviesOrTvShows };

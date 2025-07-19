@@ -1,6 +1,11 @@
+html {
+  background-color: #3c423e;
+}
+
 .wrap {
   max-width: 1280px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0 1rem;
 
   @media all and (min-width: 1300px) {

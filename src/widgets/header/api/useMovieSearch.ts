@@ -15,7 +15,7 @@ const useMovieSearch = (searchValue: Ref<string>) => {
     debouncedUpdate(newValue);
   });
 
-  return useFetch<MovieResponse | null>('/api/search/movie', {
+  return useFetch<MovieResponse>('/api/search/movie', {
     method: 'GET',
     query: {
       page: 1,

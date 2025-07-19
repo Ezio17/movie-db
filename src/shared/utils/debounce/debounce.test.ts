@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import debounce from './debounce';
+import debounce from './index';
 
 describe('debounce', () => {
   beforeEach(() => {

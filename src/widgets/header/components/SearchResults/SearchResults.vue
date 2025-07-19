@@ -1,7 +1,7 @@
 <template>
   <div
     ref="innerEl"
-    class="absolute top-full left-1/2 -translate-x-1/2 xl:left-0 xl:translate-x-0 w-full z-20 max-h-[500px] overflow-auto py-3 bg-white text-gray-900 rounded-b-xl shadow-lg ring-1 ring-black/5"
+    class="absolute bg-zinc-900 top-full left-1/2 -translate-x-1/2 xl:left-0 xl:translate-x-0 w-full z-20 max-h-[500px] overflow-auto p-4 rounded-b-xl shadow-lg ring-1 ring-black/5"
   >
     <div v-if="pending" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <Loader />
@@ -10,7 +10,7 @@
     <div
       v-else-if="errorMessage || !slicedMovies.length"
       data-testid="search-message"
-      class="text-center px-4 py-3 text-gray-500 text-xl font-bold"
+      class="text-center px-4 py-3 text-gray-200 text-xl font-bold"
     >
       {{ errorMessage || $t('no results found') }}
     </div>
@@ -20,17 +20,17 @@
         v-for="movie in slicedMovies"
         :key="movie.id"
         data-testid="search-main"
-        class="flex justify-between gap-3 px-4 py-3 hover:bg-gray-100 cursor-pointer border-b last:border-b-0"
+        class="flex justify-between gap-3 px-4 py-3 hover:bg-zinc-800 cursor-pointer border-b last:border-b-0"
       >
-        <div class="flex flex-col gap-4 justify-between">
+        <div class="flex flex-col gap-4 justify-between text-white">
           <div class="font-semibold">{{ movie.title }}</div>
 
           <div>
-            <div v-if="movie.release_date" class="mt-4 text-sm text-gray-500">
+            <div v-if="movie.release_date" class="mt-4 text-sm text-gray-200">
               {{ $t('release') }}: {{ movie.release_date }}
             </div>
 
-            <div v-if="movie.vote_average" class="text-sm text-gray-500">
+            <div v-if="movie.vote_average" class="text-sm text-gray-200">
               {{ $t('rate') }}: {{ movie.vote_average }}
             </div>
           </div>

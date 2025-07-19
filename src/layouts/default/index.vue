@@ -1,10 +1,10 @@
 <template>
-  <div class="min-h-screen grid grid-rows-[var(--header-height)_1fr_500px]">
+  <div class="min-h-screen grid grid-rows-[1fr_500px]">
     <Header @toggle-mobile-menu="toggleMenu" />
 
     <MobileNavigation :is-open-menu="isOpenMenu" @close-menu="isOpenMenu = false" />
 
-    <main>
+    <main class="mt-[var(--header-height)]">
       <NuxtPage />
     </main>
 
@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script setup lang="js">
+<script setup lang="ts">
 import { ref } from 'vue';
 import { Footer } from '@widgets/footer/index';
 import { Header } from '@widgets/header/index';
