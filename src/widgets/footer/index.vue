@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer-bg w-screen bg-cover bg-center text-white">
+  <footer class="footer-bg w-screen bg-cover bg-center text-white mt-10">
     <div class="wrap h-full flex flex-col items-center justify-center">
       <h2 class="text-4xl mb-10">{{ $t('contacts') }}</h2>
 

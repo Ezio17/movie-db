@@ -27,7 +27,7 @@ const config: StorybookConfig = {
       preprocessorOptions: {
         scss: {
           additionalData: `
-            @import "${path.resolve(__dirname, '../src/shared/styles/variables.scss')}";
+            @import "${path.resolve(__dirname, '../src/assets/styles/variables.css')}";
           `,
         },
       },

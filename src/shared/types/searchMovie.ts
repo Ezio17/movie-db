@@ -1,23 +1,37 @@
-export interface Movie {
+interface BaseMedia {
   id: number;
-  title: string;
-  original_title: string;
+  adult: boolean;
   original_language: string;
   overview: string;
   poster_path: string | null;
   backdrop_path: string | null;
   genre_ids: number[];
-  release_date: string;
   vote_average: number;
   vote_count: number;
   popularity: number;
-  adult: boolean;
+}
+
+export interface Movie extends BaseMedia {
+  title: string;
+  original_title: string;
+  release_date: string;
   video: boolean;
 }
 
-export interface MovieResponse {
+export interface TvShow extends BaseMedia {
+  name: string;
+  original_name: string;
+  first_air_date: string;
+  origin_country: string[];
+}
+
+interface Response<T> {
   page: number;
-  results: Movie[];
+  results: T[];
   total_pages: number;
   total_results: number;
 }
+
+export type MovieResponse = Response<Movie>;
+export type TvShowResponse = Response<TvShow>;
+export type MovieOrTvShow = Movie | TvShow;
