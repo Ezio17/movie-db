@@ -32,11 +32,11 @@
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import { computed } from 'vue';
 import '@splidejs/vue-splide/css';
-import type { MovieOrTvShow } from '@shared/types';
+import type { MovieOrTv } from '@shared/types';
 import { isMovie } from '@shared/utils';
 
 interface Props {
-  movies: MovieOrTvShow[];
+  movies: MovieOrTv[];
 }
 
 const props = defineProps<Props>();
@@ -55,12 +55,11 @@ const defaultOptions = {
 
 const moviesWithPoster = computed(() => {
   return props.movies.filter(
-    (movie: MovieOrTvShow): movie is MovieOrTvShow & { backdrop_path: string } =>
-      !!movie.backdrop_path
+    (movie: MovieOrTv): movie is MovieOrTv & { backdrop_path: string } => !!movie.backdrop_path
   );
 });
 
-const getTitle = (movie: MovieOrTvShow) => {
+const getTitle = (movie: MovieOrTv) => {
   if (isMovie(movie)) {
     return movie.title;
   }

@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { mockMovies } from '@shared/constants';
 import MovieSearchResults from './SearchResults.vue';
@@ -14,6 +15,15 @@ const mockTranslate = vi.fn((key: string) => {
 
   return translations[key] || key;
 });
+
+const mockPush = vi.fn();
+const mockRouter = {
+  push: mockPush,
+};
+
+vi.mock('#app', () => ({
+  useRouter: () => mockRouter,
+}));
 
 const mockMovieResponse: MovieResponse = {
   page: 1,
@@ -218,9 +228,7 @@ describe('MovieSearchResults', () => {
     expect(movieItems).toHaveLength(0);
     expect(wrapper.text()).toContain('Результати не знайдено');
   });
-});
 
-describe('Reactivity', () => {
   it('should update when props change', async () => {
     const wrapper = createWrapper({ pending: true });
 
@@ -230,5 +238,38 @@ describe('Reactivity', () => {
 
     expect(wrapper.find('[data-testid="loader"]').exists()).toBe(false);
     expect(wrapper.text()).toContain('Test Movie 1');
+  });
+
+  it('should call handleRedirect and emit close when movie card is clicked', async () => {
+    const wrapper = createWrapper({ movies: mockMovieResponse });
+
+    const movieItems = wrapper.findAll('[data-testid="search-main"]');
+
+    await movieItems[1].trigger('click');
+    await nextTick();
+
+    expect(mockPush).toHaveBeenCalledTimes(1);
+    expect(mockPush).toHaveBeenCalledWith('movie', { query: { id: mockMovies[1].id } });
+
+    expect(wrapper.emitted('close')).toBeTruthy();
+    expect(wrapper.emitted('close')).toHaveLength(1);
+  });
+
+  it('should redirect to correct movie when different cards are clicked', async () => {
+    const wrapper = createWrapper({ movies: mockMovieResponse });
+
+    const movieItems = wrapper.findAll('[data-testid="search-main"]');
+
+    await movieItems[0].trigger('click');
+    await nextTick();
+
+    expect(mockPush).toHaveBeenCalledWith('movie', { query: { id: mockMovies[0].id } });
+
+    await movieItems[2].trigger('click');
+    await nextTick();
+
+    expect(mockPush).toHaveBeenLastCalledWith('movie', { query: { id: mockMovies[2].id } });
+    expect(mockPush).toHaveBeenCalledTimes(2);
+    expect(wrapper.emitted('close')).toHaveLength(2);
   });
 });

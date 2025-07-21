@@ -21,6 +21,7 @@
         :key="movie.id"
         data-testid="search-main"
         class="flex justify-between gap-3 px-4 py-3 hover:bg-zinc-800 cursor-pointer border-b last:border-b-0"
+        @click="handleRedirect(movie.id)"
       >
         <div class="flex flex-col gap-4 justify-between text-white">
           <div class="font-semibold">{{ movie.title }}</div>
@@ -54,6 +55,7 @@
 <script setup lang="ts">
 import { computed, defineExpose, ref } from 'vue';
 import type { MovieResponse } from '@shared/types';
+import { useRouter } from '#app';
 
 interface Props {
   movies: MovieResponse | null;
@@ -62,6 +64,9 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+const emit = defineEmits<{
+  close: [];
+}>();
 
 // Робота з батьківським віджетом
 const innerEl = ref<HTMLElement | null>(null);
@@ -71,4 +76,13 @@ defineExpose({ innerEl });
 // Обробка фільмів
 const showCount = 9;
 const slicedMovies = computed(() => (props.movies?.results || []).slice(0, showCount));
+
+// Редірект на клікнутий фільм
+const router = useRouter();
+
+function handleRedirect(id: number) {
+  emit('close');
+
+  router.push('movie', { query: { id } });
+}
 </script>
