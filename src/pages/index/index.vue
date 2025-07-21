@@ -1,53 +1,61 @@
 <template>
   <Slider :movies="sliderMovies" />
 
-  <section v-for="{ title, movies } of recommendations" :key="title">
-    <Recommendation v-if="movies.length" :movies="movies" :title="title" class="wrap mt-14" />
+  <section v-for="{ title, recommendation } of recommendations" :key="title">
+    <Recommendation
+      v-if="recommendation.length"
+      :recommendation="recommendation"
+      :title="title"
+      class="wrap mt-20"
+    />
   </section>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import type { MovieOrTvShow } from '@shared/types';
+import type { MovieOrTv, Tv, Movie, Person } from '@shared/types';
 import { Recommendation } from '@widgets/recommendation/index';
 import { Slider } from './widgets/slider';
-import { useMoviesOrTvShows } from './api';
+import { useRecommendations } from './api';
 
-const { data: popularMovie } = useMoviesOrTvShows<'movie'>('/api/movie/popular');
-const { data: topRatedMovie } = useMoviesOrTvShows<'movie'>('/api/movie/top_rated');
-const { data: upcoming } = useMoviesOrTvShows<'movie'>('/api/movie/upcoming');
-const { data: topRatedSeries } = useMoviesOrTvShows<'tv'>('/api/tv/top_rated');
-const { data: popularSeries } = useMoviesOrTvShows<'tv'>('/api/tv/popular');
+const { data: popularMovie } = useRecommendations<Movie>('/api/movie/popular');
+const { data: topRatedMovie } = useRecommendations<Movie>('/api/movie/top_rated');
+const { data: topRatedSeries } = useRecommendations<Tv>('/api/tv/top_rated');
+const { data: popularSeries } = useRecommendations<Tv>('/api/tv/popular');
+const { data: person } = useRecommendations<Person>('/api/person/popular');
 
 const { t } = useI18n();
 
 const recommendations = computed(() => [
   {
     title: t('Popular'),
-    movies: popularMovie.value.results,
+    recommendation: popularMovie.value.results,
   },
   {
     title: t('Top rated'),
-    movies: topRatedMovie.value.results,
-  },
-  {
-    title: t('New releases'),
-    movies: upcoming.value.results,
+    recommendation: topRatedMovie.value.results,
   },
   {
     title: t('Serial'),
-    movies: topRatedSeries.value.results,
+    recommendation: topRatedSeries.value.results,
   },
   {
     title: t('Currently watching'),
-    movies: popularSeries.value.results,
+    recommendation: popularSeries.value.results,
+  },
+  {
+    title: t('Actors'),
+    recommendation: person.value.results,
   },
 ]);
 
-const sliderMovies = computed(() => {
-  return recommendations.value.flatMap(
-    (recommendation) => recommendation.movies.slice(0, 2) as MovieOrTvShow[]
-  );
+const sliderMovies = computed<MovieOrTv[]>(() => {
+  return [
+    ...popularMovie.value.results.slice(0, 3),
+    ...topRatedMovie.value.results.slice(0, 3),
+    ...topRatedSeries.value.results.slice(0, 3),
+    ...popularSeries.value.results.slice(0, 3),
+  ];
 });
 </script>

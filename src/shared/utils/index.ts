@@ -1,4 +1,4 @@
 import debounce from './debounce';
-import { isMovie } from './media';
+import { isMovie, isPerson, isTv } from './media';
 
-export { debounce, isMovie };
+export { debounce, isMovie, isPerson, isTv };
