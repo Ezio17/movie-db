@@ -31,8 +31,6 @@ describe('MediaCard', () => {
     type: 'person',
     name: 'Test Actor',
     poster_path: '/test-person.jpg',
-    release_date: null,
-    vote_average: null,
   };
 
   it('renders movie name and data correctly', () => {

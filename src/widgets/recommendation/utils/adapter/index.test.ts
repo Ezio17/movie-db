@@ -110,8 +110,6 @@ describe('adaptRecommendation', () => {
       name: 'Test Actor',
       type: 'person',
       poster_path: '/test-actor.jpg',
-      vote_average: null,
-      release_date: null,
     });
   });
 
@@ -207,8 +205,6 @@ describe('adaptRecommendation', () => {
       name: 'Director Without Photo',
       type: 'person',
       poster_path: null,
-      vote_average: null,
-      release_date: null,
     });
   });
 
@@ -363,7 +359,5 @@ describe('adaptRecommendation', () => {
     const result = adaptRecommendation(personData);
 
     expect(result.poster_path).toBe('/famous-actor.jpg');
-    expect(result.vote_average).toBeNull();
-    expect(result.release_date).toBeNull();
   });
 });
