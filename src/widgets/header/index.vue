@@ -36,6 +36,7 @@
         :movies="movies"
         :pending="pending"
         :error-message="error?.message || ''"
+        @close="closeSearchResults"
       />
     </div>
   </header>

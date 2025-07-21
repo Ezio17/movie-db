@@ -1,3 +1,3 @@
-import useMoviesOrTvShows from './useMoviesOrTvShows';
+import useRecommendations from './useRecommendations';
 
-export { useMoviesOrTvShows };
+export { useRecommendations };
