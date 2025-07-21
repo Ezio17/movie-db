@@ -1,10 +1,6 @@
-interface BaseRecommendation {
-  adult: boolean;
+interface BaseMedia {
   id: number;
-  popularity: number;
-}
-
-interface BaseMedia extends BaseRecommendation {
+  adult: boolean;
   original_language: string;
   overview: string;
   poster_path: string | null;
@@ -12,6 +8,7 @@ interface BaseMedia extends BaseRecommendation {
   genre_ids: number[];
   vote_average: number;
   vote_count: number;
+  popularity: number;
 }
 
 export interface Movie extends BaseMedia {
@@ -30,7 +27,7 @@ export interface Tv extends BaseMedia {
 
 export type MovieOrTv = Movie | Tv;
 
-export interface Person extends BaseRecommendation {
+export interface Person extends Pick<BaseMedia, 'id' | 'adult' | 'popularity'> {
   gender: number;
   known_for_department: string;
   name: string;

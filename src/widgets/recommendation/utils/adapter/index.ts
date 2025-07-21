@@ -8,8 +8,6 @@ function adaptRecommendation(data: Recommendation): AdaptedRecommendation {
     name: '',
     type: 'person' as const,
     poster_path: null,
-    vote_average: null,
-    release_date: null,
   };
 
   if (isMovie(data)) {
