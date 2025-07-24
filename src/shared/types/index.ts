@@ -9,9 +9,12 @@ import type {
   TvResponse,
   RecommendationResponse,
   Recommendation,
-} from './movie';
+} from './media';
 import type { MessageSchema, Locales } from './language';
-import type { AdaptedRecommendation } from './adapter';
+import type { AdaptedRecommendation, AdaptedDetails } from './adapter';
+import type { TrailerResponse, Trailer } from './trailer';
+import type { MovieDetailsResponse } from './movie-details';
+import type { TvDetailsResponse } from './tv-details';
 
 export type {
   Movie,
@@ -27,4 +30,9 @@ export type {
   RecommendationResponse,
   Recommendation,
   AdaptedRecommendation,
+  AdaptedDetails,
+  MovieDetailsResponse,
+  TvDetailsResponse,
+  TrailerResponse,
+  Trailer,
 };

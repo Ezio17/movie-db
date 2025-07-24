@@ -1,4 +1,6 @@
 <template>
+  <NuxtLoadingIndicator color="#22c55e" />
+
   <div class="min-h-screen grid grid-rows-[1fr_500px]">
     <Header @toggle-mobile-menu="toggleMenu" />
 

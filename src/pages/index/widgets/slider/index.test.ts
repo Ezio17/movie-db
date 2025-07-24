@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils';
 import { createRouter, createWebHistory } from 'vue-router';
 import type { Movie } from '@shared/types';
 import { mockMovies } from '@shared/constants';
+import { generateImgPath } from '@shared/utils';
 import MovieCarousel from './index.vue';
 
 vi.mock('@splidejs/vue-splide', () => ({
@@ -77,7 +78,7 @@ describe('MovieCarousel', () => {
     expect(images).toHaveLength(3);
 
     images.forEach((img, index) => {
-      const expectedSrc = `https://image.tmdb.org/t/p/original${mockMovies[index].backdrop_path}`;
+      const expectedSrc = generateImgPath('original', mockMovies[index].backdrop_path);
 
       if (index === 0) {
         expect(img.attributes('src')).toBe(expectedSrc);

@@ -2,9 +2,10 @@
   <div class="w-[185px] flex flex-col gap-3 cursor-pointer group" @click="emit('click')">
     <img
       v-if="mediaData.poster_path"
-      :src="`https://image.tmdb.org/t/p/w185${mediaData.poster_path}`"
+      :src="generateImgPath('w185', mediaData.poster_path)"
       alt="poster"
       class="h-[278px]"
+      loading="lazy"
     />
     <img v-else :src="notFind" alt="No image" class="h-[278px]" />
 
@@ -21,6 +22,7 @@
 
 <script setup lang="ts">
 import type { AdaptedRecommendation } from '@shared/types';
+import { generateImgPath } from '@/shared/utils';
 import notFind from '@/assets/img/not-found.webp';
 
 interface Props {

@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { mockMovies } from '@shared/constants';
+import { generateImgPath } from '@/shared/utils';
 import MovieSearchResults from './SearchResults.vue';
 import type { MovieResponse } from '@/shared/types';
 
@@ -123,8 +124,8 @@ describe('MovieSearchResults', () => {
 
     expect(images).toHaveLength(2);
 
-    expect(images[0].attributes('src')).toBe('https://image.tmdb.org/t/p/w92/poster1.jpg');
-    expect(images[1].attributes('src')).toBe('https://image.tmdb.org/t/p/w92/poster2.jpg');
+    expect(images[0].attributes('src')).toBe(generateImgPath('w92', '/poster1.jpg'));
+    expect(images[1].attributes('src')).toBe(generateImgPath('w92', '/poster2.jpg'));
   });
 
   it('should not display poster when not available', () => {
