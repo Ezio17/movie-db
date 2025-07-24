@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { Recommendation, AdaptedRecommendation } from '@shared/types';
-import MediaCard from '@/shared/components/MediaCard/MediaCard.vue';
+import { MediaCard } from '@shared/components';
 import { ViewMoreCard } from './components';
 import { adaptRecommendation } from './utils';
 import { useRouter } from '#app';
