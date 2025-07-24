@@ -1,9 +1,8 @@
-import type { AdaptedRecommendation } from '@shared/types';
+import type { AdaptedRecommendation, Recommendation } from '@shared/types';
 import { isMovie, isPerson, isTv } from '@shared/utils';
-import type { Recommendation } from '@/shared/types';
 
 function adaptRecommendation(data: Recommendation): AdaptedRecommendation {
-  const baseResult = {
+  const common = {
     id: data.id,
     name: '',
     type: 'person' as const,
@@ -12,7 +11,7 @@ function adaptRecommendation(data: Recommendation): AdaptedRecommendation {
 
   if (isMovie(data)) {
     return {
-      ...baseResult,
+      ...common,
       name: data.title,
       type: 'movie',
       poster_path: data.poster_path,
@@ -23,7 +22,7 @@ function adaptRecommendation(data: Recommendation): AdaptedRecommendation {
 
   if (isTv(data)) {
     return {
-      ...baseResult,
+      ...common,
       name: data.name,
       type: 'tv',
       poster_path: data.poster_path,
@@ -34,13 +33,13 @@ function adaptRecommendation(data: Recommendation): AdaptedRecommendation {
 
   if (isPerson(data)) {
     return {
-      ...baseResult,
+      ...common,
       name: data.name,
       poster_path: data.profile_path,
     };
   }
 
-  return baseResult;
+  return common;
 }
 
 export { adaptRecommendation };

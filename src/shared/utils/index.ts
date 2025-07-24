@@ -1,4 +1,5 @@
 import debounce from './debounce';
-import { isMovie, isPerson, isTv } from './media';
+import generateImgPath from './generate-img-path';
+import { isMovie, isPerson, isTv } from './type-guards';
 
-export { debounce, isMovie, isPerson, isTv };
+export { debounce, isMovie, isPerson, isTv, generateImgPath };

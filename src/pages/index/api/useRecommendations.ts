@@ -1,11 +1,16 @@
 import type { Response } from '@shared/types';
-import { useFetch } from 'nuxt/app';
+import { useFetch, useNuxtApp } from 'nuxt/app';
 
 const useRecommendations = <T>(path: string) => {
   return useFetch<Response<T>>(path, {
     method: 'GET',
-    query: {
-      page: 1,
+    key: `recommendations-${path}`,
+    server: true,
+    getCachedData(key) {
+      const { payload, ssrContext } = useNuxtApp();
+
+      return ((payload.data as Record<string, unknown>)[key] ||
+        (ssrContext?.cache as Record<string, unknown>)?.[key]) as Response<T> | undefined;
     },
     default: () => ({
       results: [],

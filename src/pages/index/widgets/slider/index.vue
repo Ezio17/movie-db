@@ -6,8 +6,8 @@
           <img
             v-bind="
               !index
-                ? { src: generateImageUrl(movie.backdrop_path) }
-                : { 'data-splide-lazy': generateImageUrl(movie.backdrop_path) }
+                ? { src: generateImgPath('original', movie.backdrop_path) }
+                : { 'data-splide-lazy': generateImgPath('original', movie.backdrop_path) }
             "
             sizes="(max-width: 640px) 300px, (max-width: 1024px) 780px, 1280px"
             class="absolute inset-0 w-full h-full object-cover object-center"
@@ -33,7 +33,7 @@ import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import { computed } from 'vue';
 import '@splidejs/vue-splide/css';
 import type { MovieOrTv } from '@shared/types';
-import { isMovie } from '@shared/utils';
+import { isMovie, generateImgPath } from '@shared/utils';
 
 interface Props {
   movies: MovieOrTv[];
@@ -66,10 +66,6 @@ const getTitle = (movie: MovieOrTv) => {
 
   return movie.name;
 };
-
-function generateImageUrl(backdropPath: string) {
-  return `https://image.tmdb.org/t/p/original${backdropPath}`;
-}
 </script>
 
 <style lang="scss" scoped>

@@ -39,7 +39,7 @@
 
         <img
           v-if="movie.poster_path"
-          :src="`https://image.tmdb.org/t/p/w92${movie.poster_path}`"
+          :src="generateImgPath('w92', movie.poster_path)"
           alt="Image"
           class="h-24"
         />
@@ -55,6 +55,7 @@
 <script setup lang="ts">
 import { computed, defineExpose, ref } from 'vue';
 import type { MovieResponse } from '@shared/types';
+import { generateImgPath } from '@/shared/utils';
 import { useRouter } from '#app';
 
 interface Props {

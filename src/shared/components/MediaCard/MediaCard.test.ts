@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import type { AdaptedRecommendation } from '@shared/types';
+import { generateImgPath } from '@/shared/utils';
 import MediaCard from './MediaCard.vue';
 
 vi.mock('@/assets/img/not-found.webp', () => ({
@@ -40,9 +41,7 @@ describe('MediaCard', () => {
 
     expect(wrapper.find('h3').text()).toBe('Test Movie');
 
-    expect(wrapper.find('img').attributes('src')).toBe(
-      'https://image.tmdb.org/t/p/w185/test-poster.jpg'
-    );
+    expect(wrapper.find('img').attributes('src')).toBe(generateImgPath('w185', '/test-poster.jpg'));
     expect(wrapper.find('img').attributes('alt')).toBe('poster');
     expect(wrapper.text()).toContain('8.5 rate');
     expect(wrapper.text()).toContain('2024-01-15');
@@ -56,7 +55,7 @@ describe('MediaCard', () => {
     expect(wrapper.find('h3').text()).toBe('Test TV Show');
 
     expect(wrapper.find('img').attributes('src')).toBe(
-      'https://image.tmdb.org/t/p/w185/test-tv-poster.jpg'
+      generateImgPath('w185', '/test-tv-poster.jpg')
     );
     expect(wrapper.find('img').attributes('alt')).toBe('poster');
     expect(wrapper.text()).toContain('9.2 rate');

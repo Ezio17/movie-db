@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { isMovie, isTv, isPerson } from '@shared/utils';
 import { adaptRecommendation } from './index';
-import type { Movie, Tv, Person } from '@/shared/types/movie';
+import type { Movie, Tv, Person } from '@/shared/types';
 
 vi.mock('@shared/utils', () => ({
   isMovie: vi.fn(),
