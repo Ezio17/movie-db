@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import TitleWrapper from './TitleWrapper.vue';
 
-const meta: Meta<typeof TitleWrapper> = {
+type TitleWrapperType = typeof TitleWrapper;
+
+const meta: Meta<TitleWrapperType> = {
   title: 'Shared/UI/Title',
   component: TitleWrapper,
   tags: ['autodocs'],
@@ -12,7 +14,7 @@ const meta: Meta<typeof TitleWrapper> = {
 
 export default meta;
 
-type Story = StoryObj<typeof TitleWrapper>;
+type Story = StoryObj<TitleWrapperType>;
 
 export const Default: Story = {
   name: 'Default Title',
