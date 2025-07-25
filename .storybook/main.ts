@@ -3,8 +3,8 @@ import path from 'path';
 import vue from '@vitejs/plugin-vue';
 
 const config: StorybookConfig = {
-  stories: ['../src/shared/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-  addons: ['@storybook/addon-a11y'],
+  stories: ['../src/**/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+  addons: ['@storybook/addon-a11y', '@storybook/addon-docs'],
   framework: {
     name: '@storybook/vue3-vite',
     options: {},
