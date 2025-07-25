@@ -5,7 +5,7 @@ import Navigation from './Navigation.vue';
 
 const mockT = (key: string) => key;
 
-vi.mock('@widgets/header/constants/navigation', () => ({
+vi.mock('@widgets/Header/constants/navigation', () => ({
   default: [
     { name: 'movie', link: '/movie' },
     { name: 'serial', link: '/serial' },
