@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 import { describe, it, expect, vi } from 'vitest';
 import ContactList from './ContactList.vue';
 
-vi.mock('@widgets/footer/constants/contacts', () => ({
+vi.mock('@widgets/Footer/constants/contacts', () => ({
   default: [
     {
       title: 'Email',

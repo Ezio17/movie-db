@@ -20,5 +20,5 @@
 </template>
 
 <script setup lang="ts">
-import { contacts } from '@widgets/footer/constants';
+import { contacts } from '@widgets/Footer/constants';
 </script>

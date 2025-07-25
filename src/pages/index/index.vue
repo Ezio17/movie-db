@@ -15,7 +15,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { MovieOrTv, Tv, Movie, Person } from '@shared/types';
-import { Recommendation } from '@widgets/recommendation/index';
+import { Recommendation } from '@widgets/Recommendation/index';
 import { Slider } from './widgets/slider';
 import { useRecommendations } from './api';
 

@@ -16,9 +16,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Footer } from '@widgets/footer/index';
-import { Header } from '@widgets/header/index';
-import { MobileNavigation } from '@widgets/mobileNavigation/index';
+import { Footer } from '@widgets/Footer/index';
+import { Header } from '@widgets/Header/index';
+import { MobileNavigation } from '@widgets/MobileNavigation/index';
 
 const isOpenMenu = ref(false);
 
