@@ -17,6 +17,7 @@
   "Serial": "Серіал",
   "Actors": "Актори",
   "Similar": "Схожі",
+  "Filmography": "Фільмографія",
   "Currently watching": "Зараз дивляться",
   "View all": "Переглянути все",
   "title": "Назва",
@@ -34,6 +35,12 @@
   "status": "Статус",
   "min": "хв",
   "h": "год",
+  "name": "Ім’я",
+  "also_known_as": "Також відомий як",
+  "birthday": "Дата народження",
+  "deathday": "Дата смерті",
+  "place_of_birth": "Місце народження",
+  "biography": "Біографія",
 
   "Github": "Github",
   "Linkedin": "Linkedin"
