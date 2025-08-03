@@ -10,7 +10,7 @@
         @click="handleRedirect(mediaData)"
       />
 
-      <ViewMoreCard />
+      <ViewMoreCard v-if="isViewAll" />
     </div>
   </div>
 </template>
@@ -21,19 +21,18 @@ import type { Recommendation, AdaptedRecommendation } from '@shared/types';
 import { MediaCard } from '@shared/components';
 import { ViewMoreCard } from './components';
 import { adaptRecommendation } from './utils';
-import { useRouter } from '#app';
+import { navigateTo } from '#app';
 
 interface Props {
   recommendation: Recommendation[];
   title: string;
+  isViewAll?: boolean;
 }
 
-const props = defineProps<Props>();
-
-const router = useRouter();
+const props = withDefaults(defineProps<Props>(), { isViewAll: true });
 
 function handleRedirect({ type, id }: AdaptedRecommendation) {
-  router.push({ name: type, query: { id } });
+  navigateTo({ path: `/details/${type}`, query: { id } });
 }
 
 const adaptedRecommendation = computed(() => {

@@ -5,6 +5,7 @@ import { mockMovies } from '@shared/constants';
 import { generateImgPath } from '@/shared/utils';
 import MovieSearchResults from './SearchResults.vue';
 import type { MovieResponse } from '@/shared/types';
+import { navigateTo } from '#app';
 
 const mockTranslate = vi.fn((key: string) => {
   const translations: Record<string, string> = {
@@ -17,13 +18,8 @@ const mockTranslate = vi.fn((key: string) => {
   return translations[key] || key;
 });
 
-const mockPush = vi.fn();
-const mockRouter = {
-  push: mockPush,
-};
-
 vi.mock('#app', () => ({
-  useRouter: () => mockRouter,
+  navigateTo: vi.fn(),
 }));
 
 const mockMovieResponse: MovieResponse = {
@@ -249,8 +245,8 @@ describe('MovieSearchResults', () => {
     await movieItems[1].trigger('click');
     await nextTick();
 
-    expect(mockPush).toHaveBeenCalledTimes(1);
-    expect(mockPush).toHaveBeenCalledWith('movie', { query: { id: mockMovies[1].id } });
+    expect(navigateTo).toHaveBeenCalledTimes(1);
+    expect(navigateTo).toHaveBeenCalledWith('movie', { query: { id: mockMovies[1].id } });
 
     expect(wrapper.emitted('close')).toBeTruthy();
     expect(wrapper.emitted('close')).toHaveLength(1);
@@ -264,13 +260,13 @@ describe('MovieSearchResults', () => {
     await movieItems[0].trigger('click');
     await nextTick();
 
-    expect(mockPush).toHaveBeenCalledWith('movie', { query: { id: mockMovies[0].id } });
+    expect(navigateTo).toHaveBeenCalledWith('movie', { query: { id: mockMovies[0].id } });
 
     await movieItems[2].trigger('click');
     await nextTick();
 
-    expect(mockPush).toHaveBeenLastCalledWith('movie', { query: { id: mockMovies[2].id } });
-    expect(mockPush).toHaveBeenCalledTimes(2);
+    expect(navigateTo).toHaveBeenLastCalledWith('movie', { query: { id: mockMovies[2].id } });
+    expect(navigateTo).toHaveBeenCalledTimes(2);
     expect(wrapper.emitted('close')).toHaveLength(2);
   });
 });

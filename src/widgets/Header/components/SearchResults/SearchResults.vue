@@ -56,7 +56,7 @@
 import { computed, defineExpose, ref } from 'vue';
 import type { MovieResponse } from '@shared/types';
 import { generateImgPath } from '@/shared/utils';
-import { useRouter } from '#app';
+import { navigateTo } from '#app';
 
 interface Props {
   movies: MovieResponse | null;
@@ -79,11 +79,9 @@ const showCount = 9;
 const slicedMovies = computed(() => (props.movies?.results || []).slice(0, showCount));
 
 // Редірект на клікнутий фільм
-const router = useRouter();
-
 function handleRedirect(id: number) {
   emit('close');
 
-  router.push('movie', { query: { id } });
+  navigateTo('movie', { query: { id } });
 }
 </script>

@@ -6,7 +6,7 @@ type DetailTypeMap = {
   tv: TvDetailsResponse;
 };
 
-const useDetails = <T extends keyof DetailTypeMap>(id: number, type: T) => {
+const useDetails = <T extends keyof DetailTypeMap>(id: string, type: T) => {
   return useFetch<DetailTypeMap[T]>(`/api/${type}/${id}`);
 };
 

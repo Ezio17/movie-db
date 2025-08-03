@@ -33,7 +33,7 @@ export interface Person extends Pick<BaseMedia, 'id' | 'adult' | 'popularity'> {
   name: string;
   original_name: string;
   profile_path: string | null;
-  known_for: MovieOrTv[];
+  known_for?: MovieOrTv[];
 }
 
 export interface Response<T> {
