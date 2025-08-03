@@ -17,6 +17,7 @@
   "Serial": "Serial",
   "Actors": "Actors",
   "Similar": "Similar",
+  "Filmography": "Filmography",
   "Currently watching": "Currently watching",
   "View all": "View all",
   "title": "Title",
@@ -34,6 +35,12 @@
   "tagline": "Tagline",
   "min": "min",
   "h": "h",
+  "name": "Name",
+  "also_known_as": "Also known as",
+  "birthday": "Birthday",
+  "deathday": "Deathday",
+  "place_of_birth": "Place of birth",
+  "biography": "Biography",
 
   "Github": "Github",
   "Linkedin": "Linkedin"

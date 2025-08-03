@@ -32,6 +32,12 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), { isViewAll: true });
 
 function handleRedirect({ type, id }: AdaptedRecommendation) {
+  if (type === 'person') {
+    navigateTo({ name: type, query: { id } });
+
+    return;
+  }
+
   navigateTo({ path: `/details/${type}`, query: { id } });
 }
 
