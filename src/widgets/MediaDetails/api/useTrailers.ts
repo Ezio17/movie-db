@@ -1,7 +1,7 @@
 import type { TrailerResponse, Trailer } from '@shared/types';
 import { useFetch } from 'nuxt/app';
 
-const useTrailers = (id: number, type: string) => {
+const useTrailers = (id: string, type: string) => {
   return useFetch<TrailerResponse>(`/api/${type}/${id}/videos`, {
     method: 'GET',
     transform: (response: TrailerResponse) => {

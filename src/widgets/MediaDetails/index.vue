@@ -7,7 +7,7 @@
       <img class="xl:h-[400px]" :src="generateImgPath('w342', details.poster_path)" alt="Poster" />
     </div>
 
-    <div class="col-span-2 xl:col-span-1">
+    <div v-if="trailer" class="col-span-2 xl:col-span-1">
       <Intro :title="details.title" :video-key="trailer?.key" :description="details.overview" />
     </div>
 
