@@ -3,7 +3,7 @@
     :type="type"
     :value="modelValue"
     :placeholder="placeholder"
-    class="px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary w-full"
+    class="px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary"
     @input="handleInput"
     @focus="emit('focus')"
     @blur="emit('blur')"

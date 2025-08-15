@@ -1,11 +1,12 @@
 <template>
   <Slider :movies="sliderMovies" />
 
-  <section v-for="{ title, recommendation } of recommendations" :key="title">
+  <section v-for="{ title, recommendation, endpoint } of recommendations" :key="title">
     <Recommendation
       v-if="recommendation.length"
       :recommendation="recommendation"
       :title="title"
+      :endpoint="endpoint"
       class="wrap mt-20"
     />
   </section>
@@ -15,9 +16,8 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { MovieOrTv, Tv, Movie, Person } from '@shared/types';
-import { Recommendation } from '@widgets/Recommendation';
+import { Recommendation, useRecommendations } from '@widgets/Recommendation';
 import { Slider } from './widgets/slider';
-import { useRecommendations } from './api';
 
 const { data: popularMovie } = useRecommendations<Movie>('/api/movie/popular');
 const { data: topRatedMovie } = useRecommendations<Movie>('/api/movie/top_rated');
@@ -31,22 +31,27 @@ const recommendations = computed(() => [
   {
     title: t('Popular'),
     recommendation: popularMovie.value.results,
+    endpoint: 'popular',
   },
   {
     title: t('Top rated'),
     recommendation: topRatedMovie.value.results,
+    endpoint: 'top_rated',
   },
   {
     title: t('Serial'),
     recommendation: topRatedSeries.value.results,
+    endpoint: 'top_rated',
   },
   {
     title: t('Currently watching'),
     recommendation: popularSeries.value.results,
+    endpoint: 'popular',
   },
   {
     title: t('Actors'),
     recommendation: person.value.results,
+    endpoint: 'popular',
   },
 ]);
 

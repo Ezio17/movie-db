@@ -41,6 +41,9 @@
   "deathday": "Deathday",
   "place_of_birth": "Place of birth",
   "biography": "Biography",
+  "tv": "TV Show",
+  "movie": "Movie",
+  "person": "Person",
 
   "Github": "Github",
   "Linkedin": "Linkedin"
