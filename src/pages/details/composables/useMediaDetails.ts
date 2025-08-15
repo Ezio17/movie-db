@@ -1,5 +1,4 @@
 import { ref, watch, type ComputedRef } from 'vue';
-import { useCredits, useSimilar } from '@shared/api';
 import type {
   TrailerResponse,
   Person,
@@ -10,6 +9,7 @@ import type {
   TvDetailsResponse,
 } from '@shared/types';
 import { useTrailers, useDetails } from '@/widgets/MediaDetails';
+import { useCredits, useSimilar } from '../api';
 
 export const useMediaDetails = async (
   id: ComputedRef<string>,

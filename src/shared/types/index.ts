@@ -9,6 +9,8 @@ import type {
   TvResponse,
   RecommendationResponse,
   Recommendation,
+  MediaTypeMap,
+  MediaType,
 } from './media';
 import type { MessageSchema, Locales } from './language';
 import type { AdaptedRecommendation, AdaptedDetails } from './adapter';
@@ -35,4 +37,6 @@ export type {
   TvDetailsResponse,
   TrailerResponse,
   Trailer,
+  MediaTypeMap,
+  MediaType,
 };

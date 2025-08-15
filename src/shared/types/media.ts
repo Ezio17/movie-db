@@ -36,6 +36,14 @@ export interface Person extends Pick<BaseMedia, 'id' | 'adult' | 'popularity'> {
   known_for?: MovieOrTv[];
 }
 
+export type MediaTypeMap = {
+  movie: Movie;
+  tv: Tv;
+  person: Person;
+};
+
+export type MediaType = keyof MediaTypeMap;
+
 export interface Response<T> {
   page: number;
   results: T[];
@@ -46,5 +54,5 @@ export interface Response<T> {
 export type MovieResponse = Response<Movie>;
 export type TvResponse = Response<Tv>;
 export type PersonResponse = Response<Person>;
+export type RecommendationResponse = Response<Movie | Tv | Person>;
 export type Recommendation = MovieOrTv | Person;
-export type RecommendationResponse = MovieResponse | TvResponse | PersonResponse;
