@@ -1,21 +1,21 @@
 <template>
   <div class="wrap mt-14 px-4">
-    <Select
-      v-if="showGenresList"
-      id="genre"
-      v-model="genre"
-      :options="genresList"
-      placeholder="Select"
-      class="w-full sm:w-[300px]"
-    />
-
     <Recommendation
       v-if="showMovies"
       :recommendation="mediaData"
       :title="$t(mediaType)"
       :is-view-all="false"
       class="mt-20"
-    />
+    >
+      <template v-if="showGenresList" #header>
+        <Select
+          id="genre"
+          v-model="genre"
+          :options="genresList"
+          placeholder="Select"
+          class="w-full sm:w-[300px] mt-14"
+      /></template>
+    </Recommendation>
   </div>
 </template>
 
@@ -38,13 +38,18 @@ type MediaWithoutPerson = Omit<MediaTypeMap, 'person'>[Exclude<MediaType, 'perso
 
 const route = useRoute();
 
-const { endpoint, genre: genreQuery } = route.query;
+const { endpoint, genre: genreQuery } = route.query as {
+  endpoint: string | undefined;
+  genre?: string | undefined;
+};
 
 const mediaType = computed(() => route.params.mediaType as 'movie' | 'tv' | 'person');
 const isPerson = computed(() => mediaType.value === 'person');
 
+const MEDIA_TYPES = ['movie', 'tv', 'person'];
+
 watchEffect(() => {
-  if (!['movie', 'tv', 'person'].includes(mediaType.value)) {
+  if (!MEDIA_TYPES.includes(mediaType.value) || !endpoint) {
     throw showError(createError({ statusMessage: 'Page not found.', statusCode: 404 }));
   }
 });

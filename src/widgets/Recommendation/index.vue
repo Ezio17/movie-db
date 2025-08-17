@@ -2,6 +2,8 @@
   <div>
     <TitleWrapper>{{ title }}</TitleWrapper>
 
+    <slot name="header" />
+
     <div class="grid grid-cols-[repeat(auto-fill,185px)] justify-center gap-x-6 gap-y-10 mt-12">
       <MediaCard
         v-for="mediaData of adaptedRecommendation"
@@ -39,12 +41,6 @@ const adaptedRecommendation = computed(() => {
 const type = computed(() => adaptedRecommendation.value?.[0]?.type);
 
 function handleRedirectDetails({ id }: AdaptedRecommendation) {
-  if (type.value === 'person') {
-    navigateTo({ name: type.value, query: { id } });
-
-    return;
-  }
-
   navigateTo({ path: `/details/${type.value}`, query: { id } });
 }
 

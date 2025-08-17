@@ -46,6 +46,11 @@ describe('Navigation.vue', () => {
   it('renders correct href attributes', () => {
     const hrefs = wrapper.findAll('a').map((a) => a.attributes('href'));
 
-    expect(hrefs).toEqual(['/movie', '/serial', '/actors', '/contacts']);
+    expect(hrefs).toEqual([
+      '/movie?endpoint=popular',
+      '/tv?endpoint=top_rated',
+      '/person?endpoint=popular',
+      '#contacts',
+    ]);
   });
 });
