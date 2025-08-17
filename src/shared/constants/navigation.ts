@@ -1,19 +1,19 @@
 const navigation = [
   {
     name: 'movie',
-    link: '/movie',
+    link: '/movie?endpoint=popular',
   },
   {
     name: 'serial',
-    link: '/serial',
+    link: '/tv?endpoint=top_rated',
   },
   {
     name: 'actors',
-    link: '/actors',
+    link: '/person?endpoint=popular',
   },
   {
     name: 'contacts',
-    link: '/contacts',
+    link: '#contacts',
   },
 ] as const;
 
