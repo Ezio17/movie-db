@@ -1,7 +1,7 @@
 <template>
   <div class="relative text-black">
     <span
-      class="cursor-pointer capitalize text-white text-xl font-bold"
+      class="cursor-pointer capitalize text-white text-lg font-bold"
       @click.stop="toggleBlock"
       >{{ locale }}</span
     >

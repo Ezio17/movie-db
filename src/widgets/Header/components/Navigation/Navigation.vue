@@ -2,12 +2,12 @@
   <nav data-testid="navigation">
     <ul class="flex gap-8">
       <li v-for="{ link, name } of navigation" :key="link" class="li-hover">
-        <NuxtLink v-if="!link.startsWith('#')" class="text-white text-xl font-bold" :to="link">
+        <NuxtLink v-if="!link.startsWith('#')" class="text-white text-lg font-bold" :to="link">
           {{ $t(name) }}
         </NuxtLink>
         <a
           v-else
-          class="text-white text-xl font-bold"
+          class="text-white text-lg font-bold"
           :href="link"
           @click.prevent="onAnchorClick(link)"
         >

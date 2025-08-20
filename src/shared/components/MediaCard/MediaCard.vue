@@ -9,7 +9,7 @@
     />
     <img v-else :src="notFind" alt="No image" class="h-[278px]" />
 
-    <h3 class="text-lg leading-snug text-secondary font-bold group-hover:text-primary">
+    <h3 class="text-md leading-snug text-secondary font-bold group-hover:text-primary">
       {{ mediaData.name }}
     </h3>
 
