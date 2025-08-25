@@ -1,11 +1,15 @@
 import { ref, computed, watch, type Ref } from 'vue';
+import { useScreenSize } from '@shared/composable';
 
 export default function usePagination(totalPages: Ref<number>, currentPage: Ref<number>) {
+  const { isMobile } = useScreenSize();
   const pagesList = ref<number[]>([]);
 
   const isFirstPage = computed(() => currentPage.value === 1);
   const isLastPage = computed(() => currentPage.value === totalPages.value);
-  const countMiddlePages = computed(() => (isFirstPage.value || isLastPage.value ? 5 : 3));
+  const countMiddlePages = computed(() =>
+    (isFirstPage.value || isLastPage.value) && !isMobile.value ? 5 : 3
+  );
 
   const fillMiddlePages = (lastPage: number, startsWith = 1) => {
     const result: number[] = [];
@@ -18,6 +22,10 @@ export default function usePagination(totalPages: Ref<number>, currentPage: Ref<
   };
 
   const fillRightSide = () => {
+    if (isMobile.value) {
+      return [];
+    }
+
     const result: number[] = [];
 
     let lastMiddlePage = currentPage.value + countMiddlePages.value;
@@ -49,6 +57,10 @@ export default function usePagination(totalPages: Ref<number>, currentPage: Ref<
   };
 
   const fillLeftSide = () => {
+    if (isMobile.value) {
+      return [];
+    }
+
     const result: number[] = [];
 
     let pagesLeft = currentPage.value - 1;
@@ -143,7 +155,7 @@ export default function usePagination(totalPages: Ref<number>, currentPage: Ref<
   };
 
   watch(
-    [currentPage, totalPages],
+    [currentPage, totalPages, isMobile],
     () => {
       generatePages();
     },

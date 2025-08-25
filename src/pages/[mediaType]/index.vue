@@ -12,7 +12,7 @@
           id="genre"
           v-model="genre"
           :options="genresList"
-          placeholder="Select"
+          :placeholder="$t('Select')"
           class="w-full sm:w-[300px] mt-14"
       /></template>
     </Recommendation>
@@ -38,11 +38,13 @@ import type {
   RecommendationResponse,
   Recommendation as RecommendationType,
 } from '@shared/types';
+import { useSeoMeta } from 'nuxt/app';
 import type { List } from './types';
 import { showError, createError, useRoute } from '#app';
 import { useList, useDiscover } from './api';
 import { useQueryParam } from './composables';
 import { Pagination } from './components';
+import { toCapitalize } from './utils';
 
 // Базова ініціалізація
 type MediaWithoutPerson = Omit<MediaTypeMap, 'person'>[Exclude<MediaType, 'person'>];
@@ -67,6 +69,10 @@ const MEDIA_TYPES = ['movie', 'tv', 'person'];
 watchEffect(() => {
   if (!MEDIA_TYPES.includes(mediaType.value) || !endpoint || Number(pageQuery) > 500) {
     throw showError(createError({ statusMessage: 'Page not found.', statusCode: 404 }));
+  } else {
+    useSeoMeta({
+      title: `Movie DB | ${toCapitalize(mediaType.value)}`,
+    });
   }
 });
 

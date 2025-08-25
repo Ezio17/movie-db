@@ -13,15 +13,12 @@
             class="absolute inset-0 w-full h-full object-cover object-center"
             alt="movie"
           />
-          <div
-            class="absolute bottom-6 md:bottom-14 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-black bg-opacity-50 rounded-md max-w-[90vw] md:max-w-[60%] shadow-lg"
+          <button
+            class="absolute bottom-6 rounded-md h-12 xl:h-14 md:bottom-14 left-1/2 transform -translate-x-1/2 px-4 py-2 text-gray-800 lg:text-xl font-bold bg-primary"
+            @click="goToMovieDetail(movie)"
           >
-            <NuxtLink
-              to="#"
-              class="text-primary text-center text-base md:text-3xl font-semibold drop-shadow-md"
-              >{{ getTitle(movie) }}</NuxtLink
-            >
-          </div>
+            {{ getTitle(movie) }}
+          </button>
         </div>
       </SplideSlide>
     </Splide>
@@ -34,6 +31,7 @@ import { computed } from 'vue';
 import '@splidejs/vue-splide/css';
 import type { MovieOrTv } from '@shared/types';
 import { isMovie, generateImgPath } from '@shared/utils';
+import { navigateTo } from 'nuxt/app';
 
 interface Props {
   movies: MovieOrTv[];
@@ -45,7 +43,7 @@ const defaultOptions = {
   type: 'loop' as const,
   perPage: 1,
   autoplay: true,
-  interval: 5000,
+  interval: 555000,
   arrows: true,
   pauseOnHover: false,
   pagination: false,
@@ -65,6 +63,12 @@ const getTitle = (movie: MovieOrTv) => {
   }
 
   return movie.name;
+};
+
+const goToMovieDetail = (movie: MovieOrTv) => {
+  const type = isMovie(movie) ? 'movie' : 'tv';
+
+  navigateTo({ path: `/details/${type}`, query: { id: movie.id } });
 };
 </script>
 

@@ -1,8 +1,17 @@
 import { ref } from 'vue';
-import { describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import usePagination from '.';
 
+vi.mock('@shared/composable', () => ({
+  useScreenSize: () => ({ isMobile: ref(false) }),
+}));
+
 describe('usePagination', () => {
+  afterEach(() => {
+    vi.resetModules();
+    vi.restoreAllMocks();
+  });
+
   it('should correctly detect first page', () => {
     const { isFirstPage, isLastPage } = usePagination(ref(10), ref(1));
 
@@ -90,5 +99,42 @@ describe('usePagination', () => {
       ...rightSide,
       lastPage,
     ]);
+  });
+});
+
+describe('usePagination - mobile', () => {
+  let usePaginationMobile: typeof usePagination;
+
+  beforeEach(async () => {
+    vi.doMock('@shared/composable', () => ({
+      useScreenSize: () => ({ isMobile: ref(true) }),
+    }));
+
+    const module = await import('.');
+
+    usePaginationMobile = module.default;
+  });
+
+  afterEach(() => {
+    vi.resetModules();
+    vi.restoreAllMocks();
+  });
+
+  it('should not generate left or right sides on mobile screen size', () => {
+    const { pagesList } = usePaginationMobile(ref(500), ref(250));
+
+    expect(pagesList.value).toEqual([1, 250, 251, 252, 253, 500]);
+  });
+
+  it('should generate fewer next pages when active page is 1', () => {
+    const { pagesList } = usePaginationMobile(ref(500), ref(1));
+
+    expect(pagesList.value).toEqual([1, 2, 3, 4, 500]);
+  });
+
+  it('should generate fewer previous pages when active page is last', () => {
+    const { pagesList } = usePaginationMobile(ref(500), ref(500));
+
+    expect(pagesList.value).toEqual([1, 497, 498, 499, 500]);
   });
 });

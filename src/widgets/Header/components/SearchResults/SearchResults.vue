@@ -44,10 +44,6 @@
           class="h-24"
         />
       </div>
-
-      <!-- <div v-if="movies && movies.results.length > showCount" class="p-4 text-center">
-        <NuxtLink class="text-secondary text-lg" to="#">{{ $t('show more') }}...</NuxtLink>
-      </div> -->
     </div>
   </div>
 </template>
@@ -82,6 +78,6 @@ const slicedMovies = computed(() => (props.movies?.results || []).slice(0, showC
 function handleRedirect(id: number) {
   emit('close');
 
-  navigateTo('movie', { query: { id } });
+  navigateTo({ path: '/details/movie/', query: { id } });
 }
 </script>
