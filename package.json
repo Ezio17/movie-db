@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "start": "nuxt start",
+    "start": "node .output/server/index.mjs",
     "lint": "eslint . --ext .js,.ts,.vue",
     "format": "prettier --write .",
     "ts": "vue-tsc --noEmit",
@@ -13,7 +13,9 @@
     "test:ci": "vitest",
     "prepare": "husky",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "start:nuxt": "PORT=3001 HOST=0.0.0.0 node .output/server/index.mjs",
+    "start:all": "concurrently \"npm run start:nuxt\" \"npx http-server ./storybook-static -p 6008\""
   },
   "dependencies": {
     "@nuxt/test-utils": "^3.19.2",
@@ -50,6 +52,7 @@
     "lint-staged": "^16.1.2",
     "path": "^0.12.7",
     "prettier": "3.5.3",
+    "rollup-plugin-visualizer": "^6.0.3",
     "sass": "^1.89.2",
     "storybook": "^9.0.16",
     "typescript": "^5.8.3",

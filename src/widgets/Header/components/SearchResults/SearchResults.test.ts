@@ -246,7 +246,11 @@ describe('MovieSearchResults', () => {
     await nextTick();
 
     expect(navigateTo).toHaveBeenCalledTimes(1);
-    expect(navigateTo).toHaveBeenCalledWith('movie', { query: { id: mockMovies[1].id } });
+
+    expect(navigateTo).toHaveBeenCalledWith({
+      path: '/details/movie/',
+      query: { id: mockMovies[1].id },
+    });
 
     expect(wrapper.emitted('close')).toBeTruthy();
     expect(wrapper.emitted('close')).toHaveLength(1);
@@ -260,12 +264,18 @@ describe('MovieSearchResults', () => {
     await movieItems[0].trigger('click');
     await nextTick();
 
-    expect(navigateTo).toHaveBeenCalledWith('movie', { query: { id: mockMovies[0].id } });
+    expect(navigateTo).toHaveBeenCalledWith({
+      path: '/details/movie/',
+      query: { id: mockMovies[0].id },
+    });
 
     await movieItems[2].trigger('click');
     await nextTick();
 
-    expect(navigateTo).toHaveBeenLastCalledWith('movie', { query: { id: mockMovies[2].id } });
+    expect(navigateTo).toHaveBeenCalledWith({
+      path: '/details/movie/',
+      query: { id: mockMovies[2].id },
+    });
     expect(navigateTo).toHaveBeenCalledTimes(2);
     expect(wrapper.emitted('close')).toHaveLength(2);
   });

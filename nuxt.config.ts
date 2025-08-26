@@ -1,7 +1,48 @@
 import { defineNuxtConfig } from 'nuxt/config';
+import { visualizer } from 'rollup-plugin-visualizer';
 import path from 'path';
 
+const isDev = process.env.MODE === 'dev';
+
 export default defineNuxtConfig({
+  app: {
+    head: {
+      title: 'Movie DB',
+      meta: [
+        {
+          name: 'description',
+          content:
+            'The Movie Database (TMDB) is a popular, user editable database for movies and TV shows.',
+        },
+      ],
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+        { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
+      ],
+    },
+  },
+
+  vite: {
+    plugins: isDev ? [visualizer({ open: true })] : [],
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vue: ['vue', 'vue-router'],
+            splide: ['@splidejs/vue-splide'],
+          },
+          entryFileNames: '_nuxt/js/[name]-[hash].js',
+          chunkFileNames: '_nuxt/js/[name]-[hash].js',
+          assetFileNames: '_nuxt/assets/[name]-[hash].[ext]',
+        },
+      },
+      terserOptions: {
+        compress: { drop_console: true, drop_debugger: true, pure_funcs: ['alert'] },
+      },
+    },
+  },
+
   srcDir: 'src',
 
   compatibilityDate: '2025-05-15',

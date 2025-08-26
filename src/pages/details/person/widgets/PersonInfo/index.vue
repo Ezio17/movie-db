@@ -20,6 +20,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useSeoMeta } from 'nuxt/app';
 import { navigateTo } from '#app';
 import { generateImgPath } from '@/shared/utils';
 import { usePersonInfo } from './api';
@@ -35,6 +36,11 @@ const { data: info } = await usePersonInfo(props.id);
 
 if (!info.value) {
   navigateTo('/');
+} else {
+  useSeoMeta({
+    title: `Movie DB | ${info.value.name}`,
+    description: info.value.biography,
+  });
 }
 
 const personFields = computed(() => [

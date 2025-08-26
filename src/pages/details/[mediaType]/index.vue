@@ -22,6 +22,7 @@
 
 <script setup lang="ts">
 import { computed, watchEffect } from 'vue';
+import { useSeoMeta } from 'nuxt/app';
 import { useRoute, navigateTo } from '#app';
 import { MediaDetails, adaptDetails } from '@/widgets/MediaDetails';
 import { Recommendation } from '@/widgets/Recommendation';
@@ -51,6 +52,11 @@ const detailsAdapted = computed(() => {
 watchEffect(() => {
   if (!detailsAdapted.value) {
     navigateTo('/');
+  } else {
+    useSeoMeta({
+      title: `Movie DB | ${detailsAdapted.value.title}`,
+      description: detailsAdapted.value.overview,
+    });
   }
 });
 

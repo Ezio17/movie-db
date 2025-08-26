@@ -1,5 +1,6 @@
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { DOMWrapper, mount } from '@vue/test-utils';
+import { ref } from 'vue';
 import Pagination from './index.vue';
 
 const createWrapper = (props = {}) => {
@@ -80,5 +81,32 @@ describe('Pagination', () => {
 
     expect(currentPageBtn!.classes()).toContain('text-primary');
     expect(otherPageBtn!.classes()).not.toContain('text-primary');
+  });
+});
+
+describe('Pagination - mobile', () => {
+  beforeEach(() => {
+    vi.resetModules();
+
+    vi.doMock('@shared/composable', () => ({
+      useScreenSize: () => ({ isMobile: ref(true) }),
+    }));
+  });
+
+  it('should not render prev and next buttons on mobile', async () => {
+    const { default: PaginationMobile } = await import('./index.vue');
+
+    const wrapper = mount(PaginationMobile, {
+      props: {
+        totalPages: 10,
+        currentPage: 5,
+      },
+    });
+
+    const prevBtn = wrapper.find('[data-testid="prev-btn"]');
+    const nextBtn = wrapper.find('[data-testid="next-btn"]');
+
+    expect(prevBtn.exists()).toBeFalsy();
+    expect(nextBtn.exists()).toBeFalsy();
   });
 });

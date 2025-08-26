@@ -63,7 +63,7 @@ describe('MovieCarousel', () => {
 
   it('renders movie titles correctly', () => {
     const wrapper = createWrapper();
-    const titles = wrapper.findAll('a');
+    const titles = wrapper.findAll('button');
 
     expect(titles).toHaveLength(3);
     expect(titles[0].text()).toBe('Test Movie 1');
@@ -146,7 +146,7 @@ describe('MovieCarousel', () => {
 
     expect(wrapper.findAll('.splide-slide-mock')).toHaveLength(2);
 
-    const titles = wrapper.findAll('a');
+    const titles = wrapper.findAll('button');
 
     expect(titles).toHaveLength(2);
     expect(titles[0].text()).toBe('Movie With Backdrop');
