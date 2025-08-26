@@ -1,0 +1,3 @@
+import{b as s,j as n,i as d}from"./iframe-DCQsDILa.js";import{_ as c}from"./_plugin-vue_export-helper-DlAUqK2U.js";const l={},i={"data-testid":"loader",class:"flex items-center justify-center h-full"};function m(f,r){return d(),s("div",i,r[0]||(r[0]=[n("div",{class:"w-12 h-12 border-4 border-solid border-primary border-t-transparent rounded-full animate-spin"},null,-1)]))}const u=c(l,[["render",m]]),b={title:"Shared/UI/Loader",component:u,tags:["autodocs"]},e={name:"Default Loader"};var t,a,o;e.parameters={...e.parameters,docs:{...(t=e.parameters)==null?void 0:t.docs,source:{originalSource:`{
+  name: 'Default Loader'
+}`,...(o=(a=e.parameters)==null?void 0:a.docs)==null?void 0:o.source}}};const x=["Default"];export{e as Default,x as __namedExportsOrder,b as default};
