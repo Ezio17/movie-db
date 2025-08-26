@@ -1,4 +1,4 @@
-name: Deploy Storybook to GitHub Pages
+name: Build and Publish Storybook to GitHub Pages
 
 on:
   push:
@@ -6,36 +6,25 @@ on:
       - master
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
         with:
-          node-version: 20
+          fetch-depth: 0
 
-      - name: Install dependencies
-        run: yarn
-
-      - name: Build Nuxt
-        run: yarn build
-
-      - name: Build Storybook
-        run: yarn build-storybook
-
-      - name: Fix Storybook paths for GitHub Pages
-        run: |
-          sed -i 's|src="/|src="./|g; s|href="/|href="./|g' storybook-static/index.html
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - uses: actions/setup-node@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./storybook-static
+          node-version: '20'
+
+      - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+        with:
+          install_command: yarn install
+          build_command: yarn build-storybook
+          path: storybook-static
+          checkout: false
