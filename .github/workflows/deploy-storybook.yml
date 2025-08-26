@@ -28,7 +28,11 @@ jobs:
         run: yarn build
 
       - name: Build Storybook
-        run: yarn build-storybook:cd
+        run: yarn build-storybook
+
+      - name: Fix Storybook paths for GitHub Pages
+        run: |
+          sed -i 's|src="/|src="./|g; s|href="/|href="./|g' storybook-static/index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
