@@ -28,7 +28,7 @@ jobs:
         run: yarn build
 
       - name: Build Storybook
-        run: yarn build-storybook
+        run: yarn build-storybook:cd
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
