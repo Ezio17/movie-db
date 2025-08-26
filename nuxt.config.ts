@@ -2,7 +2,7 @@ import { defineNuxtConfig } from 'nuxt/config';
 import { visualizer } from 'rollup-plugin-visualizer';
 import path from 'path';
 
-const isDev = process.env.MODE === 'DEV';
+const isDev = process.env.MODE === 'dev';
 
 export default defineNuxtConfig({
   app: {

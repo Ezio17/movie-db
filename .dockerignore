@@ -1,0 +1,9 @@
+node_modules
+dist
+.nuxt
+storybook-static
+.env
+.DS_Store
+*.log
+*.lock
+.vscode
