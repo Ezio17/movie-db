@@ -12,8 +12,8 @@
     <li
       v-for="page of pagesList"
       :key="page"
-      class="h-10 md:h-14 w-10 md:w-14 px-[4px] md:px-2 bg-neutral-900 text-neutral-200 rounded-sm font-bold text-xl flex justify-center items-center cursor-pointer"
       :class="{ 'text-primary': page === currentPage }"
+      class="h-10 md:h-14 w-10 md:w-14 px-[4px] md:px-2 bg-neutral-900 text-neutral-200 rounded-sm font-bold text-xl flex justify-center items-center cursor-pointer"
       data-testid="middle-btn"
       @click="$emit('clickPage', page)"
     >
