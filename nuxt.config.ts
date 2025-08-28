@@ -15,11 +15,6 @@ export default defineNuxtConfig({
             'The Movie Database (TMDB) is a popular, user editable database for movies and TV shows.',
         },
       ],
-      link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
-        { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
-      ],
     },
   },
 
@@ -45,11 +40,11 @@ export default defineNuxtConfig({
 
   srcDir: 'src',
 
-  compatibilityDate: '2025-05-15',
-
   devtools: { enabled: true },
 
   build: { transpile: ['@splidejs/vue-splide'] },
+
+  compatibilityDate: '2025-05-15',
 
   modules: [
     '@pinia/nuxt',
