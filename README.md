@@ -164,3 +164,26 @@ import { formatDate } from '@shared/utils';
 // імпорт локального віджета
 import { AnalyticsChart } from '@widgets/analytics/';
 ```
+
+---
+
+# 🛠 Stack та бібліотеки
+
+**Основний стек:**
+
+* Nuxt 3
+* Vue 3
+* TypeScript
+* TailwindCSS
+* Vitest
+* Storybook
+
+**Ключові бібліотеки:**
+
+* @nuxtjs/i18n
+* @splidejs/vue-splide
+* eslint та плагіни для Nuxt, Vue, TypeScript, Prettier, Storybook
+* vitest, @vue/test-utils, happy-dom
+* prettier
+* husky
+* sass
