@@ -69,85 +69,56 @@ docker run -d --rm \
 project-root/
 ├── src/
 │   ├── assets/           # глобальні стилі, зображення, шрифти
-│   ├── layout/           # глобальні layout-и (default, auth, dashboard)
-│   │   ├── default/      # основний layout
-│   │   │   ├── widgets/  # локальні віджети для цього layout
-│   │   │   │   └── HeroBanner/
-│   │   │   │       ├── ui/
-│   │   │   │       ├── components/
-│   │   │   │       ├── utils/
-│   │   │   │       ├── index.vue
-│   │   │   │       └── index.ts
-│   │   │   ├── components/        # локальні компоненти layout
-│   │   │   ├── ui/                # dumb-компоненти layout
-│   │   │   ├── composables/
-│   │   │   ├── constants/
-│   │   │   ├── types/
-│   │   │   ├── utils/
-│   │   │   └── index.vue           # головний файл layout
-│   │   │
-│   │   ├── auth/                  # layout для сторінок авторизації
-│   │   │   ├── widgets/
-│   │   │   ├── components/
-│   │   │   ├── ui/
-│   │   │   ├── composables/
-│   │   │   ├── constants/
-│   │   │   ├── types/
-│   │   │   ├── utils/
+│   ├── layout/           # легкі каркаси сторінок (Templates)
+│   │   ├── default/
 │   │   │   └── index.vue
-│   │   │
-│   │   ├── dashboard/             # layout для дашборду
-│   │   │   ├── widgets/
-│   │   │   ├── components/
-│   │   │   ├── ui/
-│   │   │   ├── composables/
-│   │   │   ├── constants/
-│   │   │   ├── types/
-│   │   │   ├── utils/
+│   │   ├── auth/
 │   │   │   └── index.vue
-│   │   │
-│   │   └── index.ts               # барель для layout-ів
+│   │   ├── dashboard/
+│   │   │   └── index.vue
+│   │   └── index.ts      # барель для layout-ів
 │   │
 │   ├── middleware/       # route guards (auth, preload, redirects)
 │   ├── plugins/          # підключення зовнішніх бібліотек (axios, toast, dayjs)
-│   ├── shared/           # глобальні та повторно використовувані сутності
-│   │   ├── components/   # складні reusable компоненти (з тестами і storybook)
-│   │   ├── composables/  # універсальні хуки (частина з тестами)
-│   │   ├── constants/    # глобальні enum-и, ролі, ключі
-│   │   ├── types/        # глобальні типи (User, Token, Locale...)
-│   │   ├── ui/           # dumb-компоненти (з тестами і storybook)
-│   │   ├── utils/        # загальні утиліти (з тестами)
+│   ├── shared/           # глобальні ресурси
+│   │   ├── components/   # reusable компоненти
+│   │   ├── ui/           # dumb-компоненти
+│   │   ├── composables/  # універсальні хуки
+│   │   ├── utils/        # загальні утиліти
+│   │   ├── constants/    # глобальні enum-и, ключі
+│   │   ├── types/        # глобальні типи
+│   │   └── store/        # глобальні Pinia стор-и
 │   │
-│   ├── pages/            # glue-код для сторінок
-│   │   └── index/        # кожна сторінка має власну локальну архітектуру
+│   ├── pages/            # сторінки
+│   │   └── index/        # кожна сторінка може мати свої локальні ресурси
 │   │       ├── api/
 │   │       ├── components/
+│   │       ├── ui/
 │   │       ├── composables/
+│   │       ├── utils/
 │   │       ├── constants/
 │   │       ├── types/
-│   │       ├── ui/
-│   │       ├── utils/
-│   │       ├── widgets/  # локальні віджети (але без доступу до інших widgets)
+│   │       ├── widgets/  # локальні віджети
 │   │       └── index.vue
 │   │
 │   ├── widgets/          # глобальні фічеві модулі
 │   │   └── feature/
 │   │       ├── api/
-│   │       ├── store/
-│   │       ├── ui/
+│   │       ├── store/    # локальні стор-и widget
 │   │       ├── components/
-│   │       ├── utils/
+│   │       ├── ui/
 │   │       ├── composables/
+│   │       ├── utils/
 │   │       ├── constants/
 │   │       ├── types/
 │   │       ├── assets/
 │   │       └── index.vue      
 │   │       └── index.ts  # барель для віджета
 │   │
-│   └── server/           # серверна логіка (Nuxt server routes, API endpoints)
+│   └── server/           # серверна логіка (API endpoints)
 │
-├── public/               # favicon, robots.txt, etc.
-├── static/               # статичні ресурси (опціонально)
+├── public/               # favicon, robots.txt, статичні ресурси
+├── static/               # додаткові статичні ресурси
 ├── app.vue               # вхідна точка застосунку
 ├── nuxt.config.ts        # конфігурація Nuxt
 ├── vitest.config.ts      # конфігурація Vitest
