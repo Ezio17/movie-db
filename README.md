@@ -74,9 +74,8 @@ project-root/
 │   │   │   └── index.vue
 │   │   ├── auth/
 │   │   │   └── index.vue
-│   │   ├── dashboard/
-│   │   │   └── index.vue
-│   │   └── index.ts      # барель для layout-ів
+│   │   └── dashboard/
+│   │       └── index.vue
 │   │
 │   ├── middleware/       # route guards (auth, preload, redirects)
 │   ├── plugins/          # підключення зовнішніх бібліотек (axios, toast, dayjs)
