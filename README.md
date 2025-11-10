@@ -69,7 +69,45 @@ docker run -d --rm \
 project-root/
 ├── src/
 │   ├── assets/           # глобальні стилі, зображення, шрифти
-│   ├── layout/           # глобальні layout-и (default, auth)
+│   ├── layout/           # глобальні layout-и (default, auth, dashboard)
+│   │   ├── default/      # основний layout
+│   │   │   ├── widgets/  # локальні віджети для цього layout
+│   │   │   │   └── HeroBanner/
+│   │   │   │       ├── ui/
+│   │   │   │       ├── components/
+│   │   │   │       ├── utils/
+│   │   │   │       ├── index.vue
+│   │   │   │       └── index.ts
+│   │   │   ├── components/        # локальні компоненти layout
+│   │   │   ├── ui/                # dumb-компоненти layout
+│   │   │   ├── composables/
+│   │   │   ├── constants/
+│   │   │   ├── types/
+│   │   │   ├── utils/
+│   │   │   └── index.vue           # головний файл layout
+│   │   │
+│   │   ├── auth/                  # layout для сторінок авторизації
+│   │   │   ├── widgets/
+│   │   │   ├── components/
+│   │   │   ├── ui/
+│   │   │   ├── composables/
+│   │   │   ├── constants/
+│   │   │   ├── types/
+│   │   │   ├── utils/
+│   │   │   └── index.vue
+│   │   │
+│   │   ├── dashboard/             # layout для дашборду
+│   │   │   ├── widgets/
+│   │   │   ├── components/
+│   │   │   ├── ui/
+│   │   │   ├── composables/
+│   │   │   ├── constants/
+│   │   │   ├── types/
+│   │   │   ├── utils/
+│   │   │   └── index.vue
+│   │   │
+│   │   └── index.ts               # барель для layout-ів
+│   │
 │   ├── middleware/       # route guards (auth, preload, redirects)
 │   ├── plugins/          # підключення зовнішніх бібліотек (axios, toast, dayjs)
 │   ├── shared/           # глобальні та повторно використовувані сутності
@@ -81,16 +119,16 @@ project-root/
 │   │   ├── utils/        # загальні утиліти (з тестами)
 │   │
 │   ├── pages/            # glue-код для сторінок
-│   │   └── index/      # кожна сторінка має власну локальну архітектуру
+│   │   └── index/        # кожна сторінка має власну локальну архітектуру
 │   │       ├── api/
 │   │       ├── components/
 │   │       ├── composables/
 │   │       ├── constants/
-│   │       ├── types
+│   │       ├── types/
 │   │       ├── ui/
 │   │       ├── utils/
-│   │       ├── widgets/        # локальні віджети (але без доступу до інших widgets)
-│   │       ├── index.vue
+│   │       ├── widgets/  # локальні віджети (але без доступу до інших widgets)
+│   │       └── index.vue
 │   │
 │   ├── widgets/          # глобальні фічеві модулі
 │   │   └── feature/
@@ -104,7 +142,7 @@ project-root/
 │   │       ├── types/
 │   │       ├── assets/
 │   │       └── index.vue      
-│   │       └── index.ts        # барель для віджета
+│   │       └── index.ts  # барель для віджета
 │   │
 │   └── server/           # серверна логіка (Nuxt server routes, API endpoints)
 │
