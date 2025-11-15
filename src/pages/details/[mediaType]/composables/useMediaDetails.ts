@@ -11,10 +11,7 @@ import type {
 import { useTrailers, useDetails } from '@/widgets/MediaDetails';
 import { useCredits, useSimilar } from '../api';
 
-export const useMediaDetails = async (
-  id: ComputedRef<string>,
-  mediaType: ComputedRef<'movie' | 'tv'>
-) => {
+const useMediaDetails = async (id: ComputedRef<string>, mediaType: ComputedRef<'movie' | 'tv'>) => {
   const details = ref<MovieDetailsResponse | TvDetailsResponse | null>(null);
   const trailers = ref<TrailerResponse | null>(null);
   const persons = ref<Person[]>([]);
@@ -58,3 +55,5 @@ export const useMediaDetails = async (
     similar,
   };
 };
+
+export default useMediaDetails;

@@ -9,10 +9,11 @@
     "src/shared/types/**/*.d.ts",
     "types/shims-splide.d.ts",
     "types/images.d.ts",
-    "src/shared/utils/type-guards"
+    "src/shared/utils/type-guards",
+    "types/**/*.d.ts"
   ],
   "compilerOptions": {
-    "types": ["@nuxtjs/i18n"],
+    "types": ["@nuxt/schema", "@nuxtjs/i18n"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],

@@ -26,18 +26,16 @@ import { useSeoMeta } from 'nuxt/app';
 import { useRoute, navigateTo } from '#app';
 import { MediaDetails, adaptDetails } from '@/widgets/MediaDetails';
 import { Recommendation } from '@/widgets/Recommendation';
-import { useMediaDetails } from './composables/useMediaDetails';
+import { useMediaDetails } from './composables';
+
+definePageMeta({
+  middleware: ['media-check-params'],
+});
 
 const route = useRoute();
 
 const id = computed(() => route.query.id as string);
 const mediaType = computed(() => route.params.mediaType as 'movie' | 'tv');
-
-watchEffect(() => {
-  if (!id.value || (mediaType.value !== 'movie' && mediaType.value !== 'tv')) {
-    navigateTo('/');
-  }
-});
 
 const { trailers, persons, details, similar } = await useMediaDetails(id, mediaType);
 
