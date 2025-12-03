@@ -76,7 +76,6 @@ project-root/
 │   │   │   └── index.vue
 │   │   └── dashboard/
 │   │       └── index.vue
-│   │
 │   ├── middleware/       # route guards (auth, preload, redirects)
 │   ├── plugins/          # підключення зовнішніх бібліотек (axios, toast, dayjs)
 │   ├── shared/           # глобальні ресурси
@@ -84,10 +83,10 @@ project-root/
 │   │   ├── ui/           # dumb-компоненти
 │   │   ├── composables/  # універсальні хуки
 │   │   ├── utils/        # загальні утиліти
+│   │   ├── services/     # validation, auth, notification та інші сервіси
 │   │   ├── constants/    # глобальні enum-и, ключі
 │   │   ├── types/        # глобальні типи
 │   │   └── store/        # глобальні Pinia стор-и
-│   │
 │   ├── pages/            # сторінки
 │   │   └── index/        # кожна сторінка може мати свої локальні ресурси
 │   │       ├── api/
@@ -96,26 +95,25 @@ project-root/
 │   │       ├── ui/
 │   │       ├── composables/
 │   │       ├── utils/
+│   │       ├── services/
 │   │       ├── constants/
 │   │       ├── types/
 │   │       ├── widgets/  # локальні віджети
 │   │       └── index.vue
-│   │
 │   ├── widgets/          # глобальні фічеві модулі
 │   │   └── feature/
 │   │       ├── api/
-│   │       ├── store/    # локальні стор-и widget
+│   │       ├── store/
 │   │       ├── components/
 │   │       ├── ui/
 │   │       ├── composables/
 │   │       ├── utils/
+│   │       ├── services/
 │   │       ├── constants/
 │   │       ├── types/
-│   │       └── index.vue      
+│   │       ├── index.vue
 │   │       └── index.ts  # барель для віджета
-│   │
 │   └── server/           # серверна логіка (API endpoints)
-│
 ├── public/               # favicon, robots.txt, статичні ресурси
 ├── static/               # додаткові статичні ресурси
 ├── app.vue               # вхідна точка застосунку
@@ -160,7 +158,25 @@ project-root/
 * `widgets/feature` може мати ту ж структуру, що і `shared/`, але для **локальних фічевих модулів**.
 * `shared/` використовується тільки для того, що повторно застосовується у кількох місцях.
 
-### 2.6) Приклади імпортів через барелі
+### 2.6) Сервіси (services) — структура
+
+```text
+shared/
+└── services/
+    ├── auth/                  # авторизація
+    │   ├── google.ts          # логіка авторизації через Google
+    │   ├── facebook.ts        # логіка авторизації через Facebook
+    │   ├── linkedin.ts        # логіка авторизації через LinkedIn
+    │   └── index.ts           # барель
+    │
+    └── validation/            # правила валідації
+        ├── rules.ts           # власні правила валідації
+        ├── messages.ts        # повідомлення для валідації
+        ├── checks.ts          # додаткові перевірки (функції для кастомної логіки)
+        └── index.ts           # барель
+```
+
+### 2.7) Приклади імпортів через барелі
 
 ```ts
 // імпорт всіх компонентів сторінки через барель
