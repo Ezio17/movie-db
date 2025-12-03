@@ -91,6 +91,7 @@ project-root/
 │   ├── pages/            # сторінки
 │   │   └── index/        # кожна сторінка може мати свої локальні ресурси
 │   │       ├── api/
+│   │       ├── store/
 │   │       ├── components/
 │   │       ├── ui/
 │   │       ├── composables/
@@ -110,7 +111,6 @@ project-root/
 │   │       ├── utils/
 │   │       ├── constants/
 │   │       ├── types/
-│   │       ├── assets/
 │   │       └── index.vue      
 │   │       └── index.ts  # барель для віджета
 │   │
